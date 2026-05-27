@@ -13,12 +13,12 @@
   },
   "routes": [
     {
-      "pattern": "promptseen.online/*",
-      "zone_name": "promptseen.online"
+      "pattern": "promptseen.online",
+      "custom_domain": true
     },
     {
-      "pattern": "www.promptseen.online/*",
-      "zone_name": "promptseen.online"
+      "pattern": "www.promptseen.online",
+      "custom_domain": true
     }
   ]
 }
