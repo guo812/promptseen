@@ -4,5 +4,6 @@ node_modules
 .wrangler
 .env*.local
 .env
+.env.site
 .DS_Store
 npm-debug.log*

@@ -11,6 +11,25 @@
   "observability": {
     "enabled": true
   },
+  "vars": {
+    "SITE_NAME": "Prompt seen",
+    "SITE_SLUG": "chargen-ai",
+    "DOMAIN": "promptseen.online",
+    "APP_ORIGIN": "https://www.promptseen.online/",
+    "PRODUCT_TYPE": "AI-Image-Prompts",
+    "AI_PROVIDER": "fal",
+    "PAYMENT_PROVIDER": "PayPal",
+    "AUTH_PROVIDER": "google",
+    "GOOGLE_REDIRECT_URI": "https://promptseen.online/api/auth/callback/google",
+    "ENABLE_REAL_AI": "false"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "promptseen-prod",
+      "database_id": "a28f37d4-1837-4dc7-9b5b-d391774f0852"
+    }
+  ],
   "routes": [
     {
       "pattern": "promptseen.online",

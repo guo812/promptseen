@@ -1,0 +1,67 @@
+{
+  "product": {
+    "name": "promptseen",
+    "domain": "promptseen.online",
+    "origin": "https://www.promptseen.online/",
+    "type": "AI-Image-Prompts"
+  },
+  "bindings": {
+    "d1": "DB",
+    "r2": "ASSETS_BUCKET"
+  },
+  "endpoints": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "auth": "none",
+      "purpose": "Runtime, provider, and D1 health check. Does not expose secret values."
+    },
+    {
+      "path": "/api/prompts",
+      "method": "GET",
+      "auth": "none",
+      "query": { "tag": "optional", "q": "optional" },
+      "purpose": "Return prompt library from D1, falling back to static seed if needed."
+    },
+    {
+      "path": "/api/generations",
+      "method": "POST",
+      "auth": "anonymous v0; Google session planned",
+      "body": { "prompt": "string required", "style": "string optional", "userId": "string optional" },
+      "purpose": "Create an AI image generation job record in safe draft mode by default."
+    },
+    {
+      "path": "/api/generations?id=<job_id>",
+      "method": "GET",
+      "auth": "anonymous v0; owner/user check planned",
+      "purpose": "Fetch a generation job status."
+    },
+    {
+      "path": "/api/entitlements?userId=<id>",
+      "method": "GET",
+      "auth": "anonymous v0; Google session planned",
+      "purpose": "Return plan and credit entitlement. Defaults anonymous users to Free."
+    },
+    {
+      "path": "/api/paypal/create-order",
+      "method": "POST",
+      "auth": "Google session planned",
+      "body": { "planId": "starter | pro | creator" },
+      "purpose": "PayPal order contract. Live payment creation is gated pending final pricing/refund review."
+    },
+    {
+      "path": "/api/auth/google/status",
+      "method": "GET",
+      "auth": "none",
+      "purpose": "Google OAuth readiness check without exposing client secret."
+    }
+  ],
+  "rateLimits": {
+    "v0": "Cloudflare WAF/rate limiting recommended before public paid launch",
+    "generation": "server-side credit checks required before ENABLE_REAL_AI=true"
+  },
+  "privacy": {
+    "uploads": "R2 bucket planned; no public upload endpoint enabled in v0",
+    "logs": "Do not log prompt photos, access tokens, payment secrets, or OAuth secrets"
+  }
+}
