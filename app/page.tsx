@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { categories, faqs, pricing, prompts, site } from '@/lib/content';
 import { CopyButton } from '@/components/CopyButton';
+import { HomeAdStack } from '@/components/AdUnits';
 
 function Header() {
   return (
@@ -62,6 +63,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <HomeAdStack />
 
         <section className="section container">
           <div className="section-head"><h2>Stop hunting prompts across comments and random blogs</h2><p>PromptSeen Online turns trend-search intent into a practical tool interface: searchable prompt cards, clear copy actions, local market categories, and a generation workflow above the fold.</p></div>
