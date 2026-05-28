@@ -84,10 +84,19 @@ summary { cursor:pointer; font-weight: 800; }
 .ad-native-container { width: 100%; min-height: 120px; }
 .leaderboard-ad-slot { min-height: 124px; padding: 28px 12px 12px; }
 .leaderboard-ad-frame { width: min(728px, 100%); min-height: 90px; display: grid; place-items: center; }
+.ad-pair { display: grid; grid-template-columns: minmax(300px, 1fr) minmax(320px, 1fr); gap: 18px; align-items: stretch; padding: 10px 0 20px; }
+.ad-pair .ad-section { width: 100%; padding: 0; }
+.ad-pair .container { width: 100%; }
+.rectangle-ad-slot { min-height: 290px; padding: 30px 12px 12px; }
+.rectangle-ad-frame { width: 300px; min-height: 250px; display: grid; place-items: center; }
+.mobile-banner-ad-slot { min-height: 90px; padding: 28px 12px 12px; }
+.mobile-banner-ad-frame { width: 320px; min-height: 50px; display: grid; place-items: center; }
 @media (max-width: 760px) {
   .ad-card { border-radius: 18px; }
   .leaderboard-ad-slot { overflow-x: auto; justify-content: flex-start; }
   .leaderboard-ad-frame { min-width: 728px; }
+  .ad-pair { grid-template-columns: 1fr; }
+  .rectangle-ad-slot, .mobile-banner-ad-slot { justify-content: center; }
 }
 @media (max-width: 900px) {
   .nav-links { display:none; }
