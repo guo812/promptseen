@@ -47,16 +47,24 @@ async function callGemini(prompt: string, apiKey: string) {
   return part ? `data:${part.inlineData.mimeType || 'image/png'};base64,${part.inlineData.data}` : '';
 }
 
+function imageGenerationEndpoint(baseUrl: string) {
+  const trimmed = baseUrl.replace(/\/$/, '');
+  return trimmed.endsWith('/images/generations') ? trimmed : `${trimmed}/images/generations`;
+}
+
 async function callJimeng(prompt: string, env: ReturnType<typeof getEnv>) {
-  if (!hasSecret(env.JIMENG_API_KEY) || !hasSecret(env.JIMENG_ENDPOINT)) throw new Error('JIMENG_NOT_CONFIGURED');
-  const response = await fetch(env.JIMENG_ENDPOINT!, {
+  const apiKey = env.ARK_API_KEY || env.JIMENG_API_KEY;
+  const baseUrl = env.ARK_BASE_URL || env.JIMENG_ENDPOINT || 'https://ark.cn-beijing.volces.com/api/v3';
+  const model = env.SEEDREAM_MODEL || 'doubao-seedream-3-0-t2i-250415';
+  if (!hasSecret(apiKey)) throw new Error('ARK_API_KEY_NOT_CONFIGURED');
+  const response = await fetch(imageGenerationEndpoint(baseUrl), {
     method: 'POST',
-    headers: { authorization: `Bearer ${env.JIMENG_API_KEY}`, 'content-type': 'application/json' },
-    body: JSON.stringify({ prompt, size: '1024x1536' }),
+    headers: { authorization: `Bearer ${apiKey}`, 'content-type': 'application/json' },
+    body: JSON.stringify({ model, prompt, size: '1024x1536', response_format: 'url' }),
   });
   const data = await response.json() as any;
-  if (!response.ok) throw new Error(data.error?.message || `JIMENG_${response.status}`);
-  return data.url || data.image_url || data.data?.[0]?.url || '';
+  if (!response.ok) throw new Error(data.error?.message || data.message || `SEEDREAM_${response.status}`);
+  return data.url || data.image_url || data.data?.[0]?.url || data.data?.[0]?.b64_json ? (data.data?.[0]?.url || data.url || data.image_url || `data:image/png;base64,${data.data?.[0]?.b64_json}`) : '';
 }
 
 async function callProvider(provider: ProviderId, prompt: string, env: ReturnType<typeof getEnv>) {

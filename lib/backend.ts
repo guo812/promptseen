@@ -20,6 +20,9 @@ export type PromptSeenEnv = {
   GEMINI_API_KEY?: string;
   JIMENG_API_KEY?: string;
   JIMENG_ENDPOINT?: string;
+  ARK_API_KEY?: string;
+  ARK_BASE_URL?: string;
+  SEEDREAM_MODEL?: string;
   REPLICATE_API_TOKEN?: string;
   PAYPAL_CLIENT_ID?: string;
   PAYPAL_CLIENT_SECRET?: string;
