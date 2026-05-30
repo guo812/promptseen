@@ -14,27 +14,50 @@ type IframeAdProps = {
   height: number;
 };
 
-function IframeAd({ id, keyValue, width, height }: IframeAdProps) {
-  const ref = useRef<HTMLDivElement>(null);
+let adsterraIframeQueue = Promise.resolve();
 
-  useEffect(() => {
-    const slot = ref.current;
-    if (!slot || slot.dataset.loaded === 'true') return;
-    slot.dataset.loaded = 'true';
+function mountIframeAd(slot: HTMLDivElement, { id, keyValue, width, height }: IframeAdProps) {
+  return new Promise<void>((resolve) => {
     slot.innerHTML = '';
 
     const config = document.createElement('script');
-    config.text = `window.atOptions = { key: '${keyValue}', format: 'iframe', height: ${height}, width: ${width}, params: {} };`;
+    config.text = `var atOptions = { 'key': '${keyValue}', 'format': 'iframe', 'height': ${height}, 'width': ${width}, 'params': {} }; window.atOptions = atOptions;`;
 
     const invoke = document.createElement('script');
     invoke.id = `${id}-invoke`;
     invoke.src = `https://www.highperformanceformat.com/${keyValue}/invoke.js`;
     invoke.async = false;
 
-    slot.append(config, invoke);
-  }, [height, id, keyValue, width]);
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      window.clearTimeout(timer);
+      resolve();
+    };
+    const timer = window.setTimeout(finish, 6000);
+    invoke.onload = finish;
+    invoke.onerror = finish;
 
-  return <div ref={ref} className="ad-script-mount" style={{ minWidth: width, minHeight: height }} />;
+    // Keep the config script and invoke script inside the visual slot. The iframe-format
+    // Adsterra loader relies on document.currentScript/document.write, so rendering it via
+    // next/script can place the real ad after the placeholder instead of inside it.
+    slot.append(config, invoke);
+  });
+}
+
+function IframeAd(props: IframeAdProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const slot = ref.current;
+    if (!slot || slot.dataset.loaded === 'true') return;
+    slot.dataset.loaded = 'true';
+
+    adsterraIframeQueue = adsterraIframeQueue.then(() => mountIframeAd(slot, props));
+  }, [props.height, props.id, props.keyValue, props.width]);
+
+  return <div ref={ref} className="ad-script-mount" style={{ minWidth: props.width, minHeight: props.height }} />;
 }
 
 function NativeAd() {
