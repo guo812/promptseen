@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     template: '%s | PromptSeen Online',
   },
   description: site.description,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   alternates: { canonical: '/' },
   openGraph: {
     title: 'PromptSeen Online',
