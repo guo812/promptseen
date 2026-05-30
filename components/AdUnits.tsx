@@ -1,24 +1,74 @@
-import Script from 'next/script';
+"use client";
+
+import { useEffect, useRef } from 'react';
 
 const nativeAdId = '70dbe9539ea44c04164ab0db875fc1ab';
 const leaderboardAdKey = '4178face5750cd6d30f9ffd3df03e573';
 const mediumRectangleAdKey = '117fee40031a86a731a68607690c02ec';
 const mobileBannerAdKey = '37b31dd486d53c91ff7a055d7a4c1c07';
 
+type IframeAdProps = {
+  id: string;
+  keyValue: string;
+  width: number;
+  height: number;
+};
+
+function IframeAd({ id, keyValue, width, height }: IframeAdProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const slot = ref.current;
+    if (!slot || slot.dataset.loaded === 'true') return;
+    slot.dataset.loaded = 'true';
+    slot.innerHTML = '';
+
+    const config = document.createElement('script');
+    config.text = `window.atOptions = { key: '${keyValue}', format: 'iframe', height: ${height}, width: ${width}, params: {} };`;
+
+    const invoke = document.createElement('script');
+    invoke.id = `${id}-invoke`;
+    invoke.src = `https://www.highperformanceformat.com/${keyValue}/invoke.js`;
+    invoke.async = false;
+
+    slot.append(config, invoke);
+  }, [height, id, keyValue, width]);
+
+  return <div ref={ref} className="ad-script-mount" style={{ minWidth: width, minHeight: height }} />;
+}
+
+function NativeAd() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const slot = ref.current;
+    if (!slot || slot.dataset.loaded === 'true') return;
+    slot.dataset.loaded = 'true';
+    slot.innerHTML = '';
+
+    const container = document.createElement('div');
+    container.id = `container-${nativeAdId}`;
+
+    const invoke = document.createElement('script');
+    invoke.id = 'adsterra-native-banner-invoke';
+    invoke.src = `https://pl29576367.effectivecpmnetwork.com/${nativeAdId}/invoke.js`;
+    invoke.async = true;
+    invoke.dataset.cfasync = 'false';
+
+    // Adsterra native widgets look for the stable container id after their loader runs.
+    slot.append(invoke, container);
+  }, []);
+
+  return <div ref={ref} className="ad-native-container" />;
+}
+
 export function NativeBannerAd() {
   return (
     <section className="ad-section container" aria-label="Sponsored">
       <div className="ad-card native-ad-slot">
         <span className="ad-label">Sponsored</span>
-        <div id={`container-${nativeAdId}`} className="ad-native-container" />
+        <NativeAd />
       </div>
-      <Script
-        id="adsterra-native-banner"
-        src={`https://pl29576367.effectivecpmnetwork.com/${nativeAdId}/invoke.js`}
-        strategy="afterInteractive"
-        async
-        data-cfasync="false"
-      />
     </section>
   );
 }
@@ -28,29 +78,10 @@ export function LeaderboardAd() {
     <section className="ad-section container" aria-label="Advertisement">
       <div className="ad-card leaderboard-ad-slot">
         <span className="ad-label">Advertisement</span>
-        <div className="leaderboard-ad-frame" />
+        <div className="leaderboard-ad-frame">
+          <IframeAd id="adsterra-leaderboard" keyValue={leaderboardAdKey} height={90} width={728} />
+        </div>
       </div>
-      <Script
-        id="adsterra-leaderboard-options"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            var atOptions = {
-              'key': '${leaderboardAdKey}',
-              'format': 'iframe',
-              'height': 90,
-              'width': 728,
-              'params': {}
-            };
-            window.atOptions = atOptions;
-          `,
-        }}
-      />
-      <Script
-        id="adsterra-leaderboard-invoke"
-        src={`https://www.highperformanceformat.com/${leaderboardAdKey}/invoke.js`}
-        strategy="afterInteractive"
-      />
     </section>
   );
 }
@@ -60,29 +91,10 @@ export function MediumRectangleAd() {
     <section className="ad-section container" aria-label="Advertisement">
       <div className="ad-card rectangle-ad-slot">
         <span className="ad-label">Advertisement</span>
-        <div className="rectangle-ad-frame" />
+        <div className="rectangle-ad-frame">
+          <IframeAd id="adsterra-medium-rectangle" keyValue={mediumRectangleAdKey} height={250} width={300} />
+        </div>
       </div>
-      <Script
-        id="adsterra-medium-rectangle-options"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            var atOptions = {
-              'key': '${mediumRectangleAdKey}',
-              'format': 'iframe',
-              'height': 250,
-              'width': 300,
-              'params': {}
-            };
-            window.atOptions = atOptions;
-          `,
-        }}
-      />
-      <Script
-        id="adsterra-medium-rectangle-invoke"
-        src={`https://www.highperformanceformat.com/${mediumRectangleAdKey}/invoke.js`}
-        strategy="afterInteractive"
-      />
     </section>
   );
 }
@@ -92,29 +104,10 @@ export function MobileBannerAd() {
     <section className="ad-section container mobile-ad-section" aria-label="Advertisement">
       <div className="ad-card mobile-banner-ad-slot">
         <span className="ad-label">Advertisement</span>
-        <div className="mobile-banner-ad-frame" />
+        <div className="mobile-banner-ad-frame">
+          <IframeAd id="adsterra-mobile-banner" keyValue={mobileBannerAdKey} height={50} width={320} />
+        </div>
       </div>
-      <Script
-        id="adsterra-mobile-banner-options"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            var atOptions = {
-              'key': '${mobileBannerAdKey}',
-              'format': 'iframe',
-              'height': 50,
-              'width': 320,
-              'params': {}
-            };
-            window.atOptions = atOptions;
-          `,
-        }}
-      />
-      <Script
-        id="adsterra-mobile-banner-invoke"
-        src={`https://www.highperformanceformat.com/${mobileBannerAdKey}/invoke.js`}
-        strategy="afterInteractive"
-      />
     </section>
   );
 }
