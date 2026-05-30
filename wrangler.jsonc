@@ -21,7 +21,7 @@
     "PAYMENT_PROVIDER": "PayPal",
     "AUTH_PROVIDER": "google",
     "GOOGLE_REDIRECT_URI": "https://promptseen.online/api/auth/callback/google",
-    "ENABLE_REAL_AI": "false"
+    "ENABLE_REAL_AI": "true"
   },
   "d1_databases": [
     {
