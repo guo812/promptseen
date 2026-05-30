@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { categories, faqs, pricing, prompts, site } from '@/lib/content';
+import { categories, creditCosts, faqs, pricing, prompts, site, trendingSignals } from '@/lib/content';
 import { CopyButton } from '@/components/CopyButton';
 import { HomeAdStack } from '@/components/AdUnits';
 
@@ -58,7 +58,7 @@ export default function Home() {
               <div className="search-box"><input aria-label="Search prompts" placeholder="Search: Eid couple prompt, cricket DP, Gemini portrait…" /><button className="btn btn-cyan" type="button">Search Prompts</button></div>
               <div style={{ height: 18 }} />
               <div className="prompt-grid">
-                {prompts.slice(0,3).map((p) => <article className="card prompt-card" key={p.title}><div className="prompt-thumb" /><span className="badge">{p.tag}</span><h3>{p.title}</h3><p className="prompt-text">{p.prompt.slice(0, 128)}…</p><CopyButton text={p.prompt} /><Link className="btn btn-cyan" href="/app/generate">Generate</Link></article>)}
+                {prompts.slice(0,3).map((p) => <article className="card prompt-card" key={p.title}><img className="prompt-photo" src={p.image} alt={p.imageAlt} loading="lazy" /><span className="badge">{p.gender} · {p.country}</span><h3>{p.title}</h3><p className="prompt-text">{p.prompt.slice(0, 128)}…</p><CopyButton text={p.prompt} /><Link className="btn btn-cyan" href={`/app/generate?prompt=${encodeURIComponent(p.slug)}`}>Generate</Link></article>)}
               </div>
             </div>
           </div>
@@ -72,6 +72,18 @@ export default function Home() {
             <div className="card feature"><h3>Search-first</h3><p>Built for users who already know the trend they want and need a ready prompt fast.</p></div>
             <div className="card feature"><h3>Local creator markets</h3><p>India, Nepal, Bangladesh, Pakistan, Sri Lanka, and Arabic-speaking creator demand are surfaced as first-class routes.</p></div>
             <div className="card feature"><h3>No fake official claim</h3><p>The page is positioned as an independent prompt tool and avoids overclaiming proof, scarcity, or affiliation.</p></div>
+          </div>
+        </section>
+
+        <section className="section container">
+          <div className="section-head"><h2>Updated trend signals from Instagram, TikTok, and Pinterest</h2><p>Current prompt clusters are refreshed toward real creator demand. We use safe preview imagery instead of reposting creators’ original social photos without rights.</p></div>
+          <div className="features">{trendingSignals.slice(0,3).map((signal, index) => <div className="card feature" key={signal}><h3>Signal {index + 1}</h3><p>{signal}</p></div>)}</div>
+        </section>
+
+        <section className="section container">
+          <div className="section-head"><h2>Real effect previews by gender and market</h2><p>Preview cards show the intended visual effect, target gender, and country/market so visitors can imagine their own result before generating.</p></div>
+          <div className="prompt-grid prompt-grid-wide">
+            {prompts.slice(0,6).map((p) => <article className="card prompt-card" key={p.slug}><img className="prompt-photo tall" src={p.image} alt={p.imageAlt} loading="lazy" /><span className="badge">{p.gender} · {p.country}</span><h3>{p.title}</h3><p className="prompt-text">{p.sourceNote}</p><CopyButton text={p.prompt} /><Link className="btn btn-cyan" href={`/app/generate?prompt=${encodeURIComponent(p.slug)}`}>Try this look</Link></article>)}
           </div>
         </section>
 
@@ -92,6 +104,7 @@ export default function Home() {
         <section id="pricing" className="section container">
           <div className="section-head"><h2>Browse for free. Generate with credits.</h2><p>Pricing copy is staged as a product-ready draft and must be finalized before payment activation.</p></div>
           <div className="pricing">{pricing.map((p) => <article className="card price" key={p.name}><h3>{p.name}</h3><h2 style={{ fontSize: 46, marginTop: 12 }}>{p.price}</h2><p>{p.desc}</p><ul>{p.items.map((i) => <li key={i}>✓ {i}</li>)}</ul><Link className="btn btn-secondary" href={p.href}>{p.cta}</Link></article>)}</div>
+          <div className="card panel" style={{ marginTop: 18 }}><h3>Credit cost guardrail</h3><div className="cost-grid">{creditCosts.map(([name, cost]) => <div key={name}><strong>{name}</strong><span>{cost}</span></div>)}</div></div>
         </section>
 
         <section id="faq" className="section container">

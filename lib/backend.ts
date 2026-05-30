@@ -17,6 +17,9 @@ export type PromptSeenEnv = {
   GOOGLE_REDIRECT_URI?: string;
   FAL_KEY?: string;
   OPENAI_API_KEY?: string;
+  GEMINI_API_KEY?: string;
+  JIMENG_API_KEY?: string;
+  JIMENG_ENDPOINT?: string;
   REPLICATE_API_TOKEN?: string;
   PAYPAL_CLIENT_ID?: string;
   PAYPAL_CLIENT_SECRET?: string;
