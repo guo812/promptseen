@@ -55,12 +55,12 @@ function imageGenerationEndpoint(baseUrl: string) {
 async function callJimeng(prompt: string, env: ReturnType<typeof getEnv>) {
   const apiKey = env.ARK_API_KEY || env.JIMENG_API_KEY;
   const baseUrl = env.ARK_BASE_URL || env.JIMENG_ENDPOINT || 'https://ark.cn-beijing.volces.com/api/v3';
-  const model = env.SEEDREAM_MODEL || 'doubao-seedream-3-0-t2i-250415';
+  const model = env.SEEDREAM_MODEL || 'doubao-seedream-4-5-251128';
   if (!hasSecret(apiKey)) throw new Error('ARK_API_KEY_NOT_CONFIGURED');
   const response = await fetch(imageGenerationEndpoint(baseUrl), {
     method: 'POST',
     headers: { authorization: `Bearer ${apiKey}`, 'content-type': 'application/json' },
-    body: JSON.stringify({ model, prompt, size: '1024x1536', response_format: 'url' }),
+    body: JSON.stringify({ model, prompt, size: '2048x2048', response_format: 'url', watermark: false }),
   });
   const data = await response.json() as any;
   if (!response.ok) throw new Error(data.error?.message || data.message || `SEEDREAM_${response.status}`);
