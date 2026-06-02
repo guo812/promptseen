@@ -2,7 +2,7 @@ export const site = {
   name: 'PromptSeen Online',
   domain: 'https://promptseen.online',
   description:
-    'PromptSeen Online helps South Asian and Arabic Instagram creators find, copy, and generate viral AI photo prompts for Reels, Shorts, profile photos, festivals, couples, and cinematic edits.',
+    'Find and copy trending Prompt Seen style AI photo editing prompts for Instagram, Gemini, ChatGPT, profile photos, couples, festivals, cinematic edits, and South Asian or Arabic creator styles.',
 };
 
 export const categories = [

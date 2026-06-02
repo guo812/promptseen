@@ -45,9 +45,9 @@ export default function Home() {
           <div className="hero-grid">
             <div>
               <span className="badge">⚡ South Asia + Arabic creator prompt studio</span>
-              <p className="eyebrow" style={{ marginTop: 24 }}>Viral AI Photo Prompt Library</p>
-              <h1>Create Viral AI Photos with Ready Prompts</h1>
-              <p className="lede">Find, copy, and generate photo prompts for Reels, Shorts, profile photos, festivals, couples, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and cinematic creator content.</p>
+              <p className="eyebrow" style={{ marginTop: 24 }}>Trending AI photo prompts, collected and updated for creators</p>
+              <h1>Prompt Seen Online: Viral AI Photo Editing Prompts for Instagram Creators</h1>
+              <p className="lede">Find trending Prompt Seen style AI photo editing prompts for Reels, Shorts, profile photos, festivals, couples, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and cinematic creator content. Copy ready prompts for Gemini, ChatGPT, and your preferred AI image workflow.</p>
               <div className="hero-actions">
                 <Link className="btn btn-primary" href="/app/generate">Generate My AI Photo — Free</Link>
                 <a className="btn btn-secondary" href="#categories">Explore Trending Prompts</a>

@@ -10,19 +10,34 @@ const space = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' });
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
   title: {
-    default: 'PromptSeen Online: Create Viral AI Photos with Ready Prompts',
+    default: 'Prompt Seen Online - Viral AI Photo Editing Prompts for Gemini & ChatGPT',
     template: '%s | PromptSeen Online',
   },
   description: site.description,
   alternates: { canonical: '/' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
-    title: 'PromptSeen Online',
+    title: 'Prompt Seen Online - Viral AI Photo Editing Prompts for Gemini & ChatGPT',
     description: site.description,
     url: site.domain,
     siteName: 'PromptSeen Online',
     type: 'website',
   },
-  twitter: { card: 'summary_large_image', title: 'PromptSeen Online', description: site.description },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Prompt Seen Online - Viral AI Photo Editing Prompts for Gemini & ChatGPT',
+    description: site.description,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
