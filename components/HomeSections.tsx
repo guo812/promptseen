@@ -24,6 +24,7 @@ export function HeroSection() {
               <div className="search-line">Search: Eid couple prompt, cricket DP, Gemini portrait…</div>
               {prompts.slice(0, 2).map((prompt) => (
                 <div className="mini-card" key={prompt.title}>
+                  <img className="mini-thumb" src={prompt.image} alt="" aria-hidden="true" />
                   <span>{prompt.tag}</span>
                   <strong>{prompt.title}</strong>
                   <p>{prompt.prompt.slice(0, 92)}…</p>

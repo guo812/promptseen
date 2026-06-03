@@ -25,6 +25,8 @@ export type Prompt = {
   tool: 'Gemini' | 'ChatGPT' | 'Dreamina' | 'Any AI image tool';
   useCase: string;
   prompt: string;
+  image: string;
+  imageAlt: string;
 };
 
 export const prompts: Prompt[] = [
@@ -36,6 +38,8 @@ export const prompts: Prompt[] = [
     useCase: 'Reels profile photo',
     prompt:
       'Create a cinematic AI portrait of me standing under stadium floodlights, wearing a stylish cricket jersey, dramatic rim light, shallow depth of field, rain particles, confident expression, ultra-realistic 4K social media edit.',
+    image: '/assets/prompt-scenes/cricket-stadium-india-pakistan.png',
+    imageAlt: 'Indian and Pakistani cricket creator portrait concept under stadium floodlights for Instagram Reels',
   },
   {
     title: 'Eid Moonlight Couple Edit',
@@ -45,6 +49,8 @@ export const prompts: Prompt[] = [
     useCase: 'Couple photo',
     prompt:
       'Transform this couple photo into an elegant Eid moonlight portrait, warm lanterns, modest festive outfits, glowing crescent moon in the background, cinematic bokeh, soft gold highlights, realistic skin texture.',
+    image: '/assets/prompt-scenes/eid-couple-bangladesh-arabic.png',
+    imageAlt: 'Bangladesh and Arabic Eid couple moonlight portrait prompt with lanterns for Instagram posts',
   },
   {
     title: 'Bollywood Rain Poster',
@@ -54,6 +60,8 @@ export const prompts: Prompt[] = [
     useCase: 'Poster edit',
     prompt:
       'Turn my photo into a Bollywood-style rainy movie poster, neon street reflections, expressive pose, dramatic teal and amber lighting, film grain, poster composition, high-fashion social media look.',
+    image: '/assets/prompt-scenes/bollywood-rain-india-nepal.png',
+    imageAlt: 'India and Nepal Bollywood rain movie poster AI prompt scene for cinematic Instagram edits',
   },
   {
     title: 'Ramadan Street Portrait',
@@ -63,6 +71,8 @@ export const prompts: Prompt[] = [
     useCase: 'Night portrait',
     prompt:
       'Create a respectful Ramadan night street portrait with glowing market lights, elegant traditional styling, soft cinematic shadows, realistic face preservation, warm lantern background, premium Instagram profile photo.',
+    image: '/assets/prompt-scenes/ramadan-street-arabic.png',
+    imageAlt: 'Arabic Ramadan night street portrait concept with warm market lights for profile photos',
   },
   {
     title: 'South Asian Graduation DP',
@@ -72,6 +82,8 @@ export const prompts: Prompt[] = [
     useCase: 'Display picture',
     prompt:
       'Generate a clean premium graduation display picture from my photo, modern campus background, confident smile, soft daylight, professional cinematic color grade, crisp details, realistic identity preservation.',
+    image: '/assets/prompt-scenes/graduation-south-asia.png',
+    imageAlt: 'India and Sri Lanka graduation display picture AI prompt scene with campus daylight',
   },
   {
     title: 'Viral Attitude Boys Edit',
@@ -81,6 +93,8 @@ export const prompts: Prompt[] = [
     useCase: 'Shorts cover',
     prompt:
       'Make this photo a viral attitude boys edit: black streetwear, urban night backdrop, neon cyan edge lighting, cinematic smoke, sharp jawline emphasis, ultra-realistic 9:16 Reels-ready composition.',
+    image: '/assets/prompt-scenes/viral-attitude-south-asia.png',
+    imageAlt: 'South Asian viral attitude boys neon street edit concept for Instagram Reels cover',
   },
   {
     title: 'Arabic Luxury Profile Portrait',
@@ -90,6 +104,8 @@ export const prompts: Prompt[] = [
     useCase: 'Profile photo',
     prompt:
       'Create a luxury editorial profile portrait with warm desert sunset tones, premium fabric texture, soft cinematic highlights, clean background separation, realistic face details, confident creator look.',
+    image: '/assets/prompt-scenes/arabic-luxury-profile.png',
+    imageAlt: 'Gulf Arabic luxury editorial profile portrait prompt with desert sunset tones',
   },
   {
     title: 'Festival Family Photo Upgrade',
@@ -99,6 +115,8 @@ export const prompts: Prompt[] = [
     useCase: 'Festival post',
     prompt:
       'Enhance this family photo into a polished festival celebration portrait, warm lights, tasteful traditional outfits, natural smiles, realistic skin, balanced composition, social media-ready color grade.',
+    image: '/assets/prompt-scenes/festival-family-south-asia.png',
+    imageAlt: 'South Asian festival family portrait upgrade prompt with warm lights for Instagram posts',
   },
 ];
 

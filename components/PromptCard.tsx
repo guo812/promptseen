@@ -5,7 +5,8 @@ import type { Prompt } from '@/lib/content';
 export function PromptCard({ prompt, compact = false }: { prompt: Prompt; compact?: boolean }) {
   return (
     <article className="prompt-card card">
-      <div className="prompt-art" aria-hidden="true">
+      <div className="prompt-art">
+        <img src={prompt.image} alt={prompt.imageAlt} loading={compact ? 'lazy' : 'eager'} />
         <span>{prompt.tag}</span>
       </div>
       <div className="prompt-meta">
