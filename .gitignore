@@ -7,3 +7,12 @@ node_modules
 .env.site
 .DS_Store
 npm-debug.log*
+
+# Local handoff / QA artifacts (not deploy source)
+design-handoff/
+promptseen-design-handoff*.zip
+PromptSeen-Online-*.md
+PromptSeen-Online-*.docx
+input-brief.md
+qa_mobile_cdp.py
+qa-mobile-results.txt

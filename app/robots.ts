@@ -3,7 +3,9 @@ import { site } from '@/lib/content';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: '*', allow: '/', disallow: ['/app/'] }],
+    rules: [
+      { userAgent: '*', allow: '/', disallow: ['/app/', '/api/'] },
+    ],
     sitemap: `${site.domain}/sitemap.xml`,
   };
 }

@@ -1,19 +1,4 @@
-import { site } from '@/lib/content';
-
-export const dynamic = 'force-static';
-
 export function GET() {
-  const body = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>${site.domain}/sitemap.xml</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-  </sitemap>
-</sitemapindex>`;
-
-  return new Response(body, {
-    headers: {
-      'Content-Type': 'application/xml',
-    },
-  });
+  const body = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://promptseen.online/sitemap.xml</loc></sitemap></sitemapindex>`;
+  return new Response(body, { headers: { 'Content-Type': 'application/xml' } });
 }
