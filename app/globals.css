@@ -14,3 +14,46 @@
 @media (max-width:1100px){.prompts-grid,.steps-grid,.pricing-grid,.dashboard-grid{grid-template-columns:repeat(2,1fr)}.category-groups{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:980px){.navlinks{display:none}.hero-grid,.generate-shell{grid-template-columns:1fr}.hero-board{min-height:390px}.phone{position:relative;width:min(330px,90%);right:auto;top:auto;margin:0 auto;transform:none}.float-card{display:none}.section-head{display:block}.section-head p{margin-top:14px}.footer-grid{grid-template-columns:1fr}}
 @media (max-width:640px){:root{--nav-h:62px}.wrap,.hero-grid{width:min(100% - 28px,var(--max))}.hero{padding:28px 0}.hero-grid{gap:18px}h1{font-size:40px;line-height:.98}.lead{font-size:16px}.hero-actions .btn,.card-actions .btn{width:100%}.phone{width:100%}.phone-screen{min-height:390px}.prompts-grid,.steps-grid,.pricing-grid,.category-groups,.category-groups.expanded,.dashboard-grid{grid-template-columns:1fr}.section{padding:50px 0}.final-cta{padding:38px 18px}.navcta{display:none}.brand span{font-size:14px}.upload-box{min-height:240px}.page-hero{padding-top:34px}}
+
+/* Hero first-fold fit fix: keep the full value prop and product mockup visible on common laptop viewports. */
+@media (min-width:981px){
+  .hero{padding:24px 0 20px;min-height:calc(100vh - var(--nav-h));display:flex;align-items:flex-start;overflow:hidden}
+  .hero-grid{grid-template-columns:minmax(0,0.96fr) minmax(410px,0.78fr);gap:42px;align-items:center}
+  .hero-copy h1{font-size:clamp(44px,4.35vw,56px);line-height:.94;letter-spacing:-.07em;max-width:620px;margin:16px 0 14px}
+  .hero-copy .lead{font-size:clamp(16px,1.35vw,18px);line-height:1.5;max-width:590px;margin:0}
+  .hero-actions{margin-top:18px}
+  .safety-note{margin-top:12px;max-width:560px;line-height:1.45}
+  .hero-board{min-height:430px;align-self:center}
+  .phone{right:0;top:0;width:302px;transform:rotate(1.2deg);padding:12px;border-radius:30px}
+  .phone-screen{min-height:382px;padding:14px;border-radius:22px}
+  .search-line{padding:9px 11px;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mini-card{padding:10px 11px;margin:10px 0;border-radius:18px}
+  .mini-card strong{margin:3px 0;font-size:15px;line-height:1.25}
+  .mini-card p{font-size:11.5px;line-height:1.42;margin:5px 0 8px}
+  .mini-card .copy-button,.mini-card button{min-height:34px;padding:8px 13px}
+  .float-card{display:none}
+  .float-card.one{left:0;top:18px}
+  .float-card.two{left:0;bottom:28px;max-width:236px}
+}
+@media (min-width:981px) and (max-height:720px){
+  .hero-copy h1{font-size:clamp(40px,4vw,50px);line-height:.93;margin:12px 0}
+  .badge{padding:7px 11px;font-size:12px}
+  .lead{font-size:16px!important;line-height:1.43!important}
+  .hero-board{min-height:390px}
+  .phone{width:286px;padding:10px}
+  .phone-screen{min-height:350px;padding:12px}
+  .mini-card:nth-of-type(3){display:none}
+  .float-card.two{bottom:18px}
+}
+@media (max-width:980px){
+  .hero{padding-top:26px}
+  .hero-copy h1{max-width:760px}
+  .hero-board{min-height:360px}
+  .phone-screen{min-height:340px}
+}
+@media (max-width:640px){
+  .hero-copy h1{font-size:clamp(36px,11vw,44px);line-height:.96;letter-spacing:-.065em}
+  .badge{font-size:12px;line-height:1.35;white-space:normal}
+  .hero-board{min-height:330px}
+  .phone-screen{min-height:318px}
+}

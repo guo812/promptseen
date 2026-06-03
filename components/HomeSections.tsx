@@ -10,8 +10,8 @@ export function HeroSection() {
       <div className="wrap hero-grid">
         <div className="hero-copy">
           <span className="badge">Independent prompt board · Gemini · ChatGPT · Creator workflows</span>
-          <h1>Prompt Seen Online: Viral AI Photo Editing Prompts for Instagram Creators</h1>
-          <p className="lead">Find ready-to-copy Prompt Seen style AI photo prompts for Reels, profile photos, festivals, couples, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and cinematic local creator content.</p>
+          <h1>Viral AI Photo Prompts for Instagram Creators</h1>
+          <p className="lead">Find ready-to-copy Prompt Seen style prompts for Reels, profile photos, festivals, couples, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and local creator content.</p>
           <div className="hero-actions">
             <Link className="btn btn-primary" href="/generate">Sign in to Generate</Link>
             <Link className="btn btn-secondary" href="/prompts">Explore Trending Prompts</Link>
