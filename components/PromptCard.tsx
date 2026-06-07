@@ -18,7 +18,7 @@ export function PromptCard({ prompt, compact = false }: { prompt: Prompt; compac
       <pre className="snippet">{compact ? `${prompt.prompt.slice(0, 145)}…` : prompt.prompt}</pre>
       <div className="card-actions">
         <CopyButton text={prompt.prompt} label="Copy prompt" />
-        <Link className="btn btn-lime" href="/generate">Generate</Link>
+        <Link className="btn btn-lime" href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}&title=${encodeURIComponent(prompt.title)}`}>Generate</Link>
       </div>
     </article>
   );

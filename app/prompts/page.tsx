@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PromptCard } from '@/components/PromptCard';
+import { PromptFilterGrid } from '@/components/PromptFilterGrid';
 import { PageShell, SectionHeader } from '@/components/SiteShell';
 import { prompts } from '@/lib/content';
 
@@ -17,8 +17,7 @@ export default function PromptsPage() {
         <SectionHeader as="h1" eyebrow="Prompt feed" title="Copy-ready prompts for creator photo edits">
           Use filters as a product-ready UI model; all prompt text remains readable HTML for SEO and accessibility.
         </SectionHeader>
-        <div className="filter-row" aria-label="Prompt filters">{filters.map((filter) => <button className="chip" key={filter} type="button">{filter}</button>)}</div>
-        <div className="prompts-grid page-grid">{prompts.map((prompt) => <PromptCard key={prompt.title} prompt={prompt} />)}</div>
+        <PromptFilterGrid prompts={prompts} filters={filters} />
       </section>
     </PageShell>
   );

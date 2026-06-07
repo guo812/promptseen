@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     return json({
       userId,
       plan: 'free',
-      creditsRemaining: 3,
+      creditsRemaining: 1,
       source: 'fallback',
     });
   }

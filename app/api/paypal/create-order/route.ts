@@ -3,9 +3,9 @@ import { getEnv, hasSecret, json, requireString } from '@/lib/backend';
 export const dynamic = 'force-dynamic';
 
 const plans: Record<string, { name: string; priceUsd: number; credits: number }> = {
-  starter: { name: 'Starter', priceUsd: 6, credits: 60 },
-  pro: { name: 'Pro', priceUsd: 12, credits: 160 },
-  creator: { name: 'Creator', priceUsd: 24, credits: 420 },
+  starter: { name: 'Starter', priceUsd: 4.99, credits: 60 },
+  pro: { name: 'Pro', priceUsd: 9.99, credits: 160 },
+  creator: { name: 'Creator', priceUsd: 19.99, credits: 420 },
 };
 
 export async function POST(request: Request) {

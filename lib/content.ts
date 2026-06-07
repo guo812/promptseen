@@ -170,10 +170,10 @@ export const categoryLinks: ReadonlyArray<readonly [string, string]> = categoryG
 );
 
 export const pricing = [
-  { name: 'Free', price: '$0', desc: 'Browse and copy prompt ideas.', cta: 'Start with Free Prompts', href: '/prompts', items: ['Prompt library access', 'Copy-ready prompts', 'Category browsing'] },
-  { name: 'Starter', price: '$4.99', desc: 'Create more AI photos with starter credits.', cta: 'Buy Starter Credits', href: '/generate', items: ['Monthly generation credits', 'Gemini / ChatGPT prompt styles', 'Standard downloads'] },
-  { name: 'Pro', price: '$9.99', desc: 'For creators posting every week.', cta: 'Generate HD AI Photos', href: '/generate', items: ['More credits', 'HD-ready prompt workflows', 'Priority trend packs'] },
-  { name: 'Creator', price: '$19.99', desc: 'For agencies and prompt pages.', cta: 'Build Creator Workflow', href: '/generate', items: ['Bulk prompt planning', 'Creator content calendar', 'Priority support'] },
+  { name: 'Free', price: '$0', desc: 'Copy prompts for free and claim 1 free image generation after sign-in.', cta: 'Sign in for Free Plan', href: '/app/sign-in?plan=free&next=/generate', items: ['Unlimited prompt browsing', 'Unlimited free prompt copying', '1 free AI photo generation after sign-in', 'Selfie upload for the free generation'] },
+  { name: 'Starter', price: '$4.99', desc: 'Starter pack for testing more creator looks.', cta: 'Buy Starter Credits', href: '/app/sign-in?plan=starter&next=/pricing', items: ['60 generation credits', 'About 6 standard AI photo generations', 'Gemini / ChatGPT prompt styles', 'Standard downloads'] },
+  { name: 'Pro', price: '$9.99', desc: 'For creators posting new edits every week.', cta: 'Buy Pro Credits', href: '/app/sign-in?plan=pro&next=/pricing', items: ['160 generation credits', 'About 16 standard AI photo generations', 'HD-ready prompt workflows', 'Priority trend packs'] },
+  { name: 'Creator', price: '$19.99', desc: 'For agencies and prompt pages running larger batches.', cta: 'Buy Creator Credits', href: '/app/sign-in?plan=creator&next=/pricing', items: ['420 generation credits', 'About 42 standard AI photo generations', 'Bulk prompt planning', 'Priority support'] },
 ] as const;
 
 export const faqs = [
@@ -231,6 +231,6 @@ export const extraLegalPages = {
   contact: {
     title: 'Contact',
     updated: 'June 2026',
-    body: ['For product questions, partnerships, privacy requests, or support, contact zjjhgtw@gmail.com.'],
+    body: ['For product questions, partnerships, privacy requests, deletion requests, refunds, or support, contact zjjhgtw@gmail.com.', 'We aim to review support and privacy requests within a reasonable timeframe. Include your account email and payment reference when relevant.'],
   },
 } as const;

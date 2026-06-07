@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { categoryLinks, mainRoutes, site } from '@/lib/content';
+import { categoryLinks, mainRoutes } from '@/lib/content';
 
 export function TopNav() {
   return (
@@ -46,7 +46,7 @@ export function Footer() {
           <Link href="/cookie-policy">Cookie Policy</Link>
           <Link href="/refund-policy">Refund Policy</Link>
           <Link href="/ai-content-policy">AI Content Policy</Link>
-          <a href={`mailto:${site.contactEmail}`}>Contact</a>
+          <Link href="/contact">Contact</Link>
         </div>
       </div>
     </footer>
