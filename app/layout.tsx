@@ -40,17 +40,6 @@ export const metadata: Metadata = {
   description: site.description,
   alternates: { canonical: '/' },
   verification: site.gscVerification ? { google: site.gscVerification } : undefined,
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-snippet': -1,
-      'max-image-preview': 'large',
-      'max-video-preview': -1,
-    },
-  },
   openGraph: {
     title: homeTitle,
     description: site.description,
