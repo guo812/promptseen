@@ -20,7 +20,7 @@
     "AI_PROVIDER": "openai",
     "AI_FALLBACK_ORDER": "openai,gemini,ark",
     "PAYMENT_PROVIDER": "PayPal",
-    "AUTH_PROVIDER": "google",
+    "AUTH_PROVIDER": "email",
     "GOOGLE_REDIRECT_URI": "https://promptseen.online/api/auth/callback/google",
     "ENABLE_REAL_AI": "true"
   },
