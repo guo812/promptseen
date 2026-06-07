@@ -10,11 +10,11 @@ export function HeroSection() {
       <div className="wrap hero-grid">
         <div className="hero-copy">
           <span className="badge">Prompt Seen style prompt board · Gemini · ChatGPT · Instagram creators</span>
-          <h1>Prompt Seen Online: Viral AI Photo Editing Prompts</h1>
-          <p className="lead">Find ready-to-copy Prompt Seen style AI photo editing prompts for Gemini, ChatGPT, Instagram Reels, profile photos, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and South Asian or Arabic creator content.</p>
+          <h1>Prompt Seen Online: Free AI Photo Prompts to Copy</h1>
+          <p className="lead">Copy free Prompt Seen style AI photo prompts for Gemini, ChatGPT, Instagram Reels, profile photos, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and South Asian or Arabic creator content. Sign in to claim 1 free AI photo generation.</p>
           <div className="hero-actions">
-            <Link className="btn btn-primary" href="/generate">Sign in to Generate</Link>
-            <Link className="btn btn-secondary" href="/prompts">Explore Trending Prompts</Link>
+            <Link className="btn btn-primary" href="/generate">Get 1 Free Generation</Link>
+            <Link className="btn btn-secondary" href="/prompts">Browse Free Prompts</Link>
           </div>
           <p className="safety-note">Browse and copy prompts for free. AI generation uses login and credits—no unlimited or guaranteed-viral claims.</p>
         </div>
