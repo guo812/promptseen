@@ -4,7 +4,7 @@ import { categoryLinks, extraLegalPages, legalPages, mainRoutes, site } from '@/
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const routes = Array.from(new Set([
-    ...mainRoutes.map((route) => route.href),
+    ...mainRoutes.map((route) => route.href).filter((href) => href !== '/account'),
     ...categoryLinks.map(([, href]) => href),
     ...Object.keys(legalPages).map((slug) => `/${slug}`),
     ...Object.keys(extraLegalPages).map((slug) => `/${slug}`),

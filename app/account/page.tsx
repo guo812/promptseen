@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Account',
   description: 'PromptSeen Online account dashboard states for credits, favorites, generation history, and billing.',
   alternates: { canonical: '/account' },
+  robots: { index: false, follow: false },
 };
 
 export default function AccountPage() {
