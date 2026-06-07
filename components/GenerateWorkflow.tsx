@@ -8,7 +8,7 @@ const DEFAULT_PROMPT = 'Prompt Seen style AI photo editing prompt: create a cine
 
 function isSignedIn() {
   if (typeof window === 'undefined') return false;
-  return window.localStorage.getItem('promptseen_signed_in') === 'yes';
+  return window.localStorage.getItem('promptseen_signed_in') === 'yes' || document.cookie.includes('promptseen_signed_in=yes');
 }
 
 function hasUsedFreeGeneration() {
