@@ -3,7 +3,7 @@ export const site = {
   domain: 'https://promptseen.online',
   contactEmail: 'zjjhgtw@gmail.com',
   description:
-    'Find and copy trending Prompt Seen style AI photo editing prompts for Instagram, Gemini, ChatGPT, profile photos, couples, festivals, cinematic edits, and South Asian, Indian, Pakistani, Bangladeshi, Nepali, Sri Lankan, and Arabic creator styles.',
+    'Find Prompt Seen style AI photo prompts for Gemini, ChatGPT and Instagram. Copy cricket, Bollywood, Eid, Ramadan and South Asian creator ideas.',
   clarityId: 'x0vmlezgsz',
   gaId: '', // 396201330 is a GA property/numeric ID, not a GA4 Measurement ID (G-XXXXXXXXXX); skip injection until corrected.
   gscVerification: '',

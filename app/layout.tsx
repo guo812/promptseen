@@ -3,7 +3,7 @@ import Script from 'next/script';
 import './globals.css';
 import { site } from '@/lib/content';
 
-const homeTitle = 'Prompt Seen Online - Viral AI Photo Editing Prompts for Gemini & ChatGPT';
+const homeTitle = 'Prompt Seen - Viral AI Photo Editing Prompts';
 
 const structuredData = {
   '@context': 'https://schema.org',

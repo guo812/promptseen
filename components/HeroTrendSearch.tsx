@@ -1,8 +1,12 @@
 import { CopyButton } from '@/components/CopyButton';
 import { HeroTrendEnhancer } from '@/components/HeroTrendEnhancer';
-import { prompts } from '@/lib/content';
+import { prompts, type Prompt } from '@/lib/content';
 
 const quickFilters = ['Prompt Seen', 'Gemini', 'Instagram', 'Dreamina', 'Bollywood', 'Eid'];
+
+function promptHref(prompt: Prompt) {
+  return `/generate?prompt=${encodeURIComponent(prompt.prompt)}&title=${encodeURIComponent(prompt.title)}`;
+}
 
 export function HeroTrendSearch() {
   const featured = prompts[0];
@@ -41,12 +45,17 @@ export function HeroTrendSearch() {
         data-trend-card
         data-trend-text={`${featured.title} ${featured.market} ${featured.tag} ${featured.tool} ${featured.useCase} ${featured.prompt}`.toLowerCase()}
       >
-        <img src={featured.image} alt={featured.imageAlt} />
+        <a className="trend-image-link" href={promptHref(featured)} aria-label={`Open ${featured.title}`}>
+          <img src={featured.image} alt={featured.imageAlt} />
+        </a>
         <div>
           <span>{featured.market} · {featured.tool}</span>
-          <h2>{featured.title}</h2>
+          <h2><a href={promptHref(featured)}>{featured.title}</a></h2>
           <p>{featured.prompt.slice(0, 138)}…</p>
-          <CopyButton text={featured.prompt} label="Copy prompt" />
+          <div className="trend-actions">
+            <CopyButton text={featured.prompt} label="Copy prompt" />
+            <a className="btn btn-secondary" href={promptHref(featured)}>Open prompt</a>
+          </div>
         </div>
       </article>
 
@@ -58,14 +67,20 @@ export function HeroTrendSearch() {
             data-trend-card
             data-trend-text={`${prompt.title} ${prompt.market} ${prompt.tag} ${prompt.tool} ${prompt.useCase} ${prompt.prompt}`.toLowerCase()}
           >
-            <img src={prompt.image} alt={prompt.imageAlt} />
-            <div>
-              <span>{prompt.tag} · {prompt.market} · {prompt.tool}</span>
-              <strong>{prompt.title}</strong>
-            </div>
+            <a className="trend-row-main" href={promptHref(prompt)} aria-label={`Open ${prompt.title}`}>
+              <img src={prompt.image} alt={prompt.imageAlt} />
+              <div>
+                <span>{prompt.tag} · {prompt.market} · {prompt.tool}</span>
+                <strong>{prompt.title}</strong>
+              </div>
+            </a>
+            <CopyButton text={prompt.prompt} label="Copy" />
           </article>
         ))}
       </div>
+      <p className="trend-no-results" data-trend-empty hidden>
+        No exact match. Try Gemini, Eid, Bollywood, Dreamina, Instagram, or Prompt Seen.
+      </p>
       <HeroTrendEnhancer />
     </div>
   );
