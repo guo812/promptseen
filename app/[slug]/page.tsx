@@ -50,7 +50,7 @@ export default async function DynamicPage({ params }: Props) {
   return (
     <PageShell>
       <section className="section wrap page-hero">
-        <SectionHeader eyebrow="Category" title={label}>
+        <SectionHeader eyebrow="Category" title={label} as="h1">
           Ready-to-copy prompt ideas for this category. PromptSeen Online is an independent resource and results may vary by model.
         </SectionHeader>
         <div className="prompts-grid page-grid">{prompts.slice(0, 6).map((prompt) => <PromptCard key={prompt.title} prompt={prompt} />)}</div>
