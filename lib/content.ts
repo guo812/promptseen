@@ -3,7 +3,7 @@ export const site = {
   domain: 'https://promptseen.online',
   contactEmail: 'zjjhgtw@gmail.com',
   description:
-    'Find and copy trending Prompt Seen style AI photo editing prompts for Instagram, Gemini, ChatGPT, profile photos, couples, festivals, cinematic edits, and local creator styles.',
+    'Find and copy trending Prompt Seen style AI photo editing prompts for Instagram, Gemini, ChatGPT, profile photos, couples, festivals, cinematic edits, and South Asian, Indian, Pakistani, Bangladeshi, Nepali, Sri Lankan, and Arabic creator styles.',
   clarityId: 'x0vmlezgsz',
   gaId: '', // 396201330 is a GA property/numeric ID, not a GA4 Measurement ID (G-XXXXXXXXXX); skip injection until corrected.
   gscVerification: '',
@@ -31,13 +31,13 @@ export type Prompt = {
 
 export const prompts: Prompt[] = [
   {
-    title: 'Cinematic Cricket Portrait',
+    title: 'Prompt Seen Cricket Stadium DP',
     market: 'India / Pakistan',
     tag: 'Sports',
     tool: 'Gemini',
     useCase: 'Reels profile photo',
     prompt:
-      'Create a cinematic AI portrait of me standing under stadium floodlights, wearing a stylish cricket jersey, dramatic rim light, shallow depth of field, rain particles, confident expression, ultra-realistic 4K social media edit.',
+      'Prompt Seen style Gemini photo editing prompt: create a cinematic AI portrait of me standing under stadium floodlights, wearing a stylish cricket jersey, dramatic rim light, shallow depth of field, rain particles, confident expression, ultra-realistic 4K Instagram DP edit.',
     image: '/assets/prompt-scenes/cricket-stadium-india-pakistan.png',
     imageAlt: 'Indian and Pakistani cricket creator portrait concept under stadium floodlights for Instagram Reels',
   },
@@ -53,13 +53,13 @@ export const prompts: Prompt[] = [
     imageAlt: 'Bangladesh and Arabic Eid couple moonlight portrait prompt with lanterns for Instagram posts',
   },
   {
-    title: 'Bollywood Rain Poster',
+    title: 'Bollywood Retro Rain Poster',
     market: 'India / Nepal',
     tag: 'Cinematic',
     tool: 'Gemini',
     useCase: 'Poster edit',
     prompt:
-      'Turn my photo into a Bollywood-style rainy movie poster, neon street reflections, expressive pose, dramatic teal and amber lighting, film grain, poster composition, high-fashion social media look.',
+      'Prompt Seen style Gemini prompt: turn my photo into a Bollywood-style rainy retro movie poster, neon street reflections, expressive pose, dramatic teal and amber lighting, 90s film grain, poster composition, high-fashion Instagram look.',
     image: '/assets/prompt-scenes/bollywood-rain-india-nepal.png',
     imageAlt: 'India and Nepal Bollywood rain movie poster AI prompt scene for cinematic Instagram edits',
   },
@@ -86,18 +86,18 @@ export const prompts: Prompt[] = [
     imageAlt: 'India and Sri Lanka graduation display picture AI prompt scene with campus daylight',
   },
   {
-    title: 'Viral Attitude Boys Edit',
+    title: 'Dark Pinterest Boys Fit Check',
     market: 'South Asia',
     tag: 'Boys',
     tool: 'Gemini',
     useCase: 'Shorts cover',
     prompt:
-      'Make this photo a viral attitude boys edit: black streetwear, urban night backdrop, neon cyan edge lighting, cinematic smoke, sharp jawline emphasis, ultra-realistic 9:16 Reels-ready composition.',
+      'Create a dark Pinterest fit-check edit for a young South Asian creator: black streetwear, clean urban corridor, cinematic smoke, cool cyan edge lighting, sharp realistic face preservation, editorial 4:5 Instagram composition, premium magazine mood.',
     image: '/assets/prompt-scenes/viral-attitude-south-asia.png',
     imageAlt: 'South Asian viral attitude boys neon street edit concept for Instagram Reels cover',
   },
   {
-    title: 'Arabic Luxury Profile Portrait',
+    title: 'Dreamina Arabic Luxury Portrait',
     market: 'Gulf / Arabic',
     tag: 'Luxury',
     tool: 'Dreamina',

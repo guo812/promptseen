@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { CopyButton } from '@/components/CopyButton';
 import { PromptCard } from '@/components/PromptCard';
+import { HeroTrendSearch } from '@/components/HeroTrendSearch';
 import { categoryGroups, faqs, pricing, prompts } from '@/lib/content';
 import { SectionHeader } from '@/components/SiteShell';
 
@@ -9,32 +9,17 @@ export function HeroSection() {
     <section className="hero">
       <div className="wrap hero-grid">
         <div className="hero-copy">
-          <span className="badge">Independent prompt board · Gemini · ChatGPT · Creator workflows</span>
-          <h1>Viral AI Photo Prompts for Instagram Creators</h1>
-          <p className="lead">Find ready-to-copy Prompt Seen style prompts for Reels, profile photos, festivals, couples, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and local creator content.</p>
+          <span className="badge">Prompt Seen style prompt board · Gemini · ChatGPT · Instagram creators</span>
+          <h1>Prompt Seen Online: Viral AI Photo Editing Prompts</h1>
+          <p className="lead">Find ready-to-copy Prompt Seen style AI photo editing prompts for Gemini, ChatGPT, Instagram Reels, profile photos, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and South Asian or Arabic creator content.</p>
           <div className="hero-actions">
             <Link className="btn btn-primary" href="/generate">Sign in to Generate</Link>
             <Link className="btn btn-secondary" href="/prompts">Explore Trending Prompts</Link>
           </div>
           <p className="safety-note">Browse and copy prompts for free. AI generation uses login and credits—no unlimited or guaranteed-viral claims.</p>
         </div>
-        <div className="hero-board" aria-label="Prompt workflow preview">
-          <div className="phone">
-            <div className="phone-screen">
-              <div className="search-line">Search: Eid couple prompt, cricket DP, Gemini portrait…</div>
-              {prompts.slice(0, 2).map((prompt) => (
-                <div className="mini-card" key={prompt.title}>
-                  <img className="mini-thumb" src={prompt.image} alt="" aria-hidden="true" />
-                  <span>{prompt.tag}</span>
-                  <strong>{prompt.title}</strong>
-                  <p>{prompt.prompt.slice(0, 92)}…</p>
-                  <CopyButton text={prompt.prompt} label="Copy" />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="float-card one"><strong>8 prompt packs</strong><span>South Asia + Arabic trends</span></div>
-          <div className="float-card two"><strong>Credits-ready</strong><span>Honest sign-in and payment states</span></div>
+        <div className="hero-board" aria-label="Prompt Seen searchable prompt preview">
+          <HeroTrendSearch />
         </div>
       </div>
     </section>

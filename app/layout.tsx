@@ -3,10 +3,38 @@ import Script from 'next/script';
 import './globals.css';
 import { site } from '@/lib/content';
 
+const homeTitle = 'Prompt Seen Online - Viral AI Photo Editing Prompts for Gemini & ChatGPT';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${site.domain}/#website`,
+      name: 'PromptSeen Online',
+      alternateName: ['Prompt Seen Online', 'Prompt Seen style prompts'],
+      url: site.domain,
+      description: site.description,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${site.domain}/prompts?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${site.domain}/#organization`,
+      name: 'PromptSeen Online',
+      url: site.domain,
+      email: site.contactEmail,
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
   title: {
-    default: 'Prompt Seen Online - Viral AI Photo Editing Prompts for Gemini & ChatGPT',
+    default: homeTitle,
     template: '%s | PromptSeen Online',
   },
   description: site.description,
@@ -24,7 +52,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Prompt Seen Online - Viral AI Photo Editing Prompts for Gemini & ChatGPT',
+    title: homeTitle,
     description: site.description,
     url: site.domain,
     siteName: 'PromptSeen Online',
@@ -33,7 +61,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Prompt Seen Online - Viral AI Photo Editing Prompts for Gemini & ChatGPT',
+    title: homeTitle,
     description: site.description,
     images: ['/assets/og-image.svg'],
   },
@@ -48,6 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
         {children}
         {gaId ? (
           <>
