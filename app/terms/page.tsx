@@ -1,2 +1,5 @@
-import { redirect } from 'next/navigation';
-export default function Page() { redirect('/terms-of-service'); }
+import { permanentRedirect } from 'next/navigation';
+
+export default function Page() {
+  permanentRedirect('/terms-of-service');
+}
