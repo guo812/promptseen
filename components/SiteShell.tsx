@@ -19,7 +19,10 @@ export async function TopNav() {
           ))}
         </div>
         {session ? (
-          <Link className="navcta" href="/account" aria-label="Open your account">{accountLabel}</Link>
+          <div className="account-nav">
+            <Link className="navcta" href="/account" aria-label="Open your account">{accountLabel} · {(session.plan || 'free').replace(/^./, (letter) => letter.toUpperCase())}</Link>
+            <form action="/api/auth/logout" method="post"><button className="nav-signout" type="submit">Sign out</button></form>
+          </div>
         ) : (
           <Link className="navcta" href="/generate">Sign in to Generate</Link>
         )}
