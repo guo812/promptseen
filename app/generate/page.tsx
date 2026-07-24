@@ -3,6 +3,8 @@ import { Suspense } from 'react';
 import { PageShell, SectionHeader } from '@/components/SiteShell';
 import { GenerateWorkflow } from '@/components/GenerateWorkflow';
 
+export const dynamic = 'force-dynamic';
+
 type GeneratePageProps = {
   searchParams: Promise<{ prompt?: string; title?: string }>;
 };
