@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import { categoryLinks, mainRoutes } from '@/lib/content';
+import { getSessionFromCookies } from '@/lib/auth';
 
-export function TopNav() {
+export async function TopNav() {
+  const session = await getSessionFromCookies();
+  const accountLabel = session?.name?.trim() || session?.email?.split('@')[0] || 'My account';
+
   return (
     <header className="topbar">
       <nav className="wrap nav" aria-label="Main navigation">
@@ -14,7 +18,11 @@ export function TopNav() {
             <Link href={item.href} key={item.href}>{item.label}</Link>
           ))}
         </div>
-        <Link className="navcta" href="/generate">Sign in to Generate</Link>
+        {session ? (
+          <Link className="navcta" href="/account" aria-label="Open your account">{accountLabel}</Link>
+        ) : (
+          <Link className="navcta" href="/generate">Sign in to Generate</Link>
+        )}
       </nav>
     </header>
   );

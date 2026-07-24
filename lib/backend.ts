@@ -15,6 +15,17 @@ export type PromptSeenEnv = {
   GOOGLE_CLIENT_ID?: string;
   GOOGLE_CLIENT_SECRET?: string;
   GOOGLE_REDIRECT_URI?: string;
+  STRIPE_SECRET_KEY?: string;
+  STRIPE_WEBHOOK_SECRET?: string;
+  STRIPE_PRICE_STARTER?: string;
+  STRIPE_PRICE_PRO?: string;
+  STRIPE_PRICE_CREATOR?: string;
+  CREEM_API_KEY?: string;
+  CREEM_WEBHOOK_SECRET?: string;
+  CREEM_API_BASE_URL?: string;
+  CREEM_PRODUCT_STARTER?: string;
+  CREEM_PRODUCT_PRO?: string;
+  CREEM_PRODUCT_CREATOR?: string;
   FAL_KEY?: string;
   OPENAI_API_KEY?: string;
   REPLICATE_API_TOKEN?: string;

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { PageShell, SectionHeader } from '@/components/SiteShell';
+import { CheckoutButton } from '@/components/CheckoutButton';
 import { pricing } from '@/lib/content';
 
 export const metadata: Metadata = {
@@ -16,8 +16,8 @@ export default function PricingPage() {
         <SectionHeader as="h1" eyebrow="Pricing" title="Browse for free. Generate with credits.">
           Transparent pricing copy for production review. No unlimited-generation or guaranteed-result claims.
         </SectionHeader>
-        <div className="pricing-grid">{pricing.map((plan) => <article className="card price-card" key={plan.name}><span className="chip lime">{plan.name}</span><h3>{plan.price}</h3><p>{plan.desc}</p><ul>{plan.items.map((item) => <li key={item}>✓ {item}</li>)}</ul><Link className="btn btn-primary" href={plan.href}>{plan.cta}</Link></article>)}</div>
-        <p className="notice">Payment is intended for PayPal production checkout. Final checkout smoke test is required before marking paid flows DONE.</p>
+        <div className="pricing-grid">{pricing.map((plan) => <article className="card price-card" key={plan.name}><span className="chip lime">{plan.name}</span><h3>{plan.price}</h3><p>{plan.desc}</p><ul>{plan.items.map((item) => <li key={item}>✓ {item}</li>)}</ul><CheckoutButton plan={plan.name.toLowerCase()}>{plan.cta}</CheckoutButton></article>)}</div>
+        <p className="notice">Payment checkout is server-created through <code>POST /api/checkout</code>. Configure <code>PAYMENT_PROVIDER=stripe</code> or <code>PAYMENT_PROVIDER=creem</code> plus provider secrets before marking paid flows DONE.</p>
       </section>
     </PageShell>
   );

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getEnv, hasSecret } from '@/lib/backend';
+import { userIdFromSession } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -95,7 +96,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL(`/app/sign-in?error=google_user&next=${encodeURIComponent(destination)}`, url.origin));
   }
 
-  const session = await signSession({
+  const sessionPayload = {
     provider: 'google',
     sub: user.sub,
     email: user.email,
@@ -103,7 +104,22 @@ export async function GET(request: NextRequest) {
     picture: user.picture,
     plan,
     iat: Date.now(),
-  }, env.SESSION_SECRET || env.GOOGLE_CLIENT_SECRET!);
+  };
+  const session = await signSession(sessionPayload, env.SESSION_SECRET || env.GOOGLE_CLIENT_SECRET!);
+
+  if (env.DB) {
+    const userId = userIdFromSession(sessionPayload);
+    await env.DB.prepare(`
+      INSERT INTO users (id, email, name, auth_provider, google_sub, created_at, updated_at)
+      VALUES (?, ?, ?, 'google', ?, datetime('now'), datetime('now'))
+      ON CONFLICT(id) DO UPDATE SET email = excluded.email, name = excluded.name, auth_provider = 'google', google_sub = excluded.google_sub, updated_at = datetime('now')
+    `).bind(userId, user.email, user.name || user.email, user.sub || null).run();
+    await env.DB.prepare(`
+      INSERT INTO entitlements (user_id, plan, credits_remaining, source, created_at, updated_at)
+      VALUES (?, ?, 1, 'google_oauth', datetime('now'), datetime('now'))
+      ON CONFLICT(user_id) DO NOTHING
+    `).bind(userId, plan || 'free').run();
+  }
 
   const response = NextResponse.redirect(new URL(destination, url.origin));
   response.cookies.delete('promptseen_oauth_state');

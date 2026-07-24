@@ -36,8 +36,9 @@ export function SignInPanel() {
   return (
     <div className="generate-shell card auth-panel">
       <div className="upload-box">
-        <span>Email account sign-in</span>
-        <p>Create a free PromptSeen account with email. Copying prompts stays free without login; signed-in users receive 1 free AI photo generation.</p>
+        <span>Google or email account sign-in</span>
+        <p>Sign in with Google to create a secure PromptSeen account. Email fallback remains available for local review. Copying prompts stays free without login; signed-in users receive 1 free AI photo generation.</p>
+        <a className="btn btn-primary google-signin" href={`/api/auth/google/start?plan=${encodeURIComponent(plan)}&next=${encodeURIComponent(next)}`}>Continue with Google</a>
         <form className="auth-form" onSubmit={finishEmailSignIn}>
           <label className="trend-search auth-email">
             <span>Email</span>
@@ -49,7 +50,7 @@ export function SignInPanel() {
       <div className="state-list">
         <article><h3>Free entitlement</h3><p>Plan: Free · 1 free generation after email sign-in · unlimited prompt copying stays free.</p></article>
         <article><h3>After the free generation</h3><p>The next Generate action opens pricing so the user can buy credits.</p><Link className="btn btn-secondary" href="/pricing">View plans</Link></article>
-        <article><h3>Google sign-in paused</h3><p>Google OAuth is temporarily disabled while the redirect URI is reviewed. Email sign-in is the active login path.</p></article>
+        <article><h3>Google sign-in</h3><p>Google OAuth is the primary production login path. If OAuth secrets are missing, the Google button shows a safe setup-required error instead of exposing secrets.</p></article>
       </div>
       {message ? <p className="notice">{message}</p> : null}
     </div>
