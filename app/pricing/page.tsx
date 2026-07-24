@@ -17,7 +17,7 @@ export default function PricingPage() {
           Transparent pricing copy for production review. No unlimited-generation or guaranteed-result claims.
         </SectionHeader>
         <div className="pricing-grid">{pricing.map((plan) => <article className="card price-card" key={plan.name}><span className="chip lime">{plan.name}</span><h3>{plan.price}</h3><p>{plan.desc}</p><ul>{plan.items.map((item) => <li key={item}>✓ {item}</li>)}</ul><CheckoutButton plan={plan.name.toLowerCase()}>{plan.cta}</CheckoutButton></article>)}</div>
-        <p className="notice">Payment checkout is server-created through <code>POST /api/checkout</code>. Configure <code>PAYMENT_PROVIDER=stripe</code> or <code>PAYMENT_PROVIDER=creem</code> plus provider secrets before marking paid flows DONE.</p>
+        <p className="notice">Payments use a server-created Stripe Checkout session. Sign in first; your credits are added only after Stripe confirms payment.</p>
       </section>
     </PageShell>
   );

@@ -7,6 +7,8 @@ type StripeCheckoutSession = {
   id: string;
   object: 'checkout.session';
   payment_status?: string;
+  amount_total?: number;
+  currency?: string;
   customer?: string;
   customer_email?: string;
   client_reference_id?: string;
@@ -37,8 +39,13 @@ function parseStripeSignature(header: string | null) {
 async function verifyStripeSignature(rawBody: string, signatureHeader: string | null, secret: string) {
   const parsed = parseStripeSignature(signatureHeader);
   if (!parsed) return false;
+  const timestamp = Number(parsed.timestamp);
+  if (!Number.isFinite(timestamp) || Math.abs(Date.now() / 1000 - timestamp) > 5 * 60) return false;
   const expected = await hmacHex(`${parsed.timestamp}.${rawBody}`, secret);
-  return expected === parsed.signature;
+  if (expected.length !== parsed.signature.length) return false;
+  let mismatch = 0;
+  for (let index = 0; index < expected.length; index += 1) mismatch |= expected.charCodeAt(index) ^ parsed.signature.charCodeAt(index);
+  return mismatch === 0;
 }
 
 async function sha256Hex(value: string) {
@@ -56,11 +63,17 @@ async function applyCheckoutCompleted(event: StripeEvent, session: StripeCheckou
   const credits = Number(session.metadata?.credits || '0') || 0;
   if (!userId || credits <= 0) return { stored: false, reason: 'MISSING_METADATA' };
 
+  const eventInsert = await db.prepare(`
+    INSERT OR IGNORE INTO payment_webhook_events (id, provider, event_type, payload_hash, result)
+    VALUES (?, 'stripe', ?, ?, 'received')
+  `).bind(event.id, event.type, await sha256Hex(JSON.stringify(event))).run();
+  if (!eventInsert.meta?.changes) return { stored: true, duplicate: true, userId, plan, credits };
+
   await db.prepare(`
     INSERT INTO payment_orders (id, user_id, provider, plan, amount_cents, currency, status, provider_order_id, created_at, updated_at)
-    VALUES (?, ?, 'stripe', ?, 0, 'USD', ?, ?, datetime('now'), datetime('now'))
+    VALUES (?, ?, 'stripe', ?, ?, ?, ?, ?, datetime('now'), datetime('now'))
     ON CONFLICT(id) DO UPDATE SET status = excluded.status, updated_at = datetime('now')
-  `).bind(`stripe_${session.id}`, userId, plan, session.payment_status || 'paid', session.id).run();
+  `).bind(`stripe_${session.id}`, userId, plan, session.amount_total || 0, (session.currency || 'usd').toUpperCase(), session.payment_status || 'paid', session.id).run();
 
   await db.prepare(`
     INSERT INTO entitlements (user_id, plan, credits_remaining, source, created_at, updated_at)
@@ -68,10 +81,7 @@ async function applyCheckoutCompleted(event: StripeEvent, session: StripeCheckou
     ON CONFLICT(user_id) DO UPDATE SET plan = excluded.plan, credits_remaining = entitlements.credits_remaining + excluded.credits_remaining, source = 'stripe_checkout', updated_at = datetime('now')
   `).bind(userId, plan, credits).run();
 
-  await db.prepare(`
-    INSERT OR IGNORE INTO payment_webhook_events (id, provider, event_type, payload_hash, result)
-    VALUES (?, 'stripe', ?, ?, 'processed')
-  `).bind(event.id, event.type, await sha256Hex(JSON.stringify(event))).run();
+  await db.prepare(`UPDATE payment_webhook_events SET result = 'processed' WHERE id = ?1`).bind(event.id).run();
 
   return { stored: true, userId, plan, credits };
 }
