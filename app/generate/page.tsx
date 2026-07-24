@@ -3,11 +3,23 @@ import { Suspense } from 'react';
 import { PageShell, SectionHeader } from '@/components/SiteShell';
 import { GenerateWorkflow } from '@/components/GenerateWorkflow';
 
-export const metadata: Metadata = {
-  title: 'Generate AI Photo',
-  description: 'Sign in, upload a selfie, choose a Prompt Seen style prompt, and use one free generation before buying credits.',
-  alternates: { canonical: '/generate' },
+type GeneratePageProps = {
+  searchParams: Promise<{ prompt?: string; title?: string }>;
 };
+
+export async function generateMetadata({ searchParams }: GeneratePageProps): Promise<Metadata> {
+  const params = await searchParams;
+  const isPersonalizedGeneratorState = Boolean(params.prompt || params.title);
+
+  return {
+    title: 'Generate AI Photo',
+    description: 'Sign in, upload a selfie, choose a Prompt Seen style prompt, and use one free generation before buying credits.',
+    alternates: { canonical: '/generate' },
+    // Prompt text and user-selected titles create an unlimited set of tool states,
+    // not distinct search landing pages. Keep the clean generator URL indexable.
+    robots: isPersonalizedGeneratorState ? { index: false, follow: true } : undefined,
+  };
+}
 
 export default function GeneratePage() {
   return (
