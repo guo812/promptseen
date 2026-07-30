@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import './globals.css';
+import { CookieConsent } from '@/components/CookieConsent';
 import { site } from '@/lib/content';
 
 const homeTitle = 'Prompt Seen - Viral AI Photo Editing Prompts';
@@ -60,26 +60,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const clarityId = site.clarityId;
-  const gaId = site.gaId;
   return (
     <html lang="en">
       <body>
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
         {children}
-        {gaId ? (
-          <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaId}');`}
-            </Script>
-          </>
-        ) : null}
-        {clarityId ? (
-          <Script id="microsoft-clarity" strategy="afterInteractive">
-            {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','${clarityId}');`}
-          </Script>
-        ) : null}
+        <CookieConsent />
       </body>
     </html>
   );
