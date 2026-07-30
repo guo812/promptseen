@@ -27,6 +27,15 @@ type ResourcePage = {
   links: Array<[string, string]>;
 };
 
+const noindexSlugs = new Set([
+  'india-ai-photo-prompts',
+  'nepal-ai-photo-prompts',
+  'bangladesh-ai-photo-prompts',
+  'pakistan-ai-photo-prompts',
+  'sri-lanka-ai-photo-prompts',
+  'arabic-ai-photo-prompts',
+]);
+
 const resourcePages: Record<string, ResourcePage> = {
   'diwali-ai-photo-prompts': {
     title: 'Diwali AI Photo Prompts for Realistic Festival Portraits, Couple Edits, and Instagram Posts',
@@ -130,6 +139,46 @@ const resourcePages: Record<string, ResourcePage> = {
     faq: [['Why do couple AI edits distort faces?', 'Two-person edits are complex. Use a clear source photo and explicitly ask to preserve both identities.'], ['Can these prompts work for Eid and Diwali?', 'Yes. Use the festival prompts and adjust lanterns, diyas, outfits, or background details.'], ['Which tool is best for couple prompts?', 'Gemini, ChatGPT, and Dreamina can all work; choose based on the tool available to your account.'], ['Should couple generator URLs be indexed?', 'No. Personalized generate URLs should stay canonicalized or noindexed; resource pages like this should be indexed.']],
     links: [['Diwali AI Photo Prompts', '/diwali-ai-photo-prompts'], ['Eid AI Photo Prompts', '/eid-ai-photo-prompts'], ['Profile Photo Prompts', '/profile-photo-prompts'], ['Browse All Prompts', '/prompts']],
   },
+  'instagram-prompts': {
+    title: 'Instagram AI Photo Prompts for Viral Reels, Stories, Profile Grids, and Creator Edits',
+    metaTitle: 'Instagram AI Photo Prompts for Reels, Stories & Creator Edits',
+    description: 'Copy Instagram AI photo prompts for viral Reels covers, story templates, carousel posts, profile grids, and trending creator image edits for Gemini and ChatGPT.',
+    intro: 'Instagram photo prompts need more than a style word. They need the right aspect ratio, visual density, and feed-native composition. This resource gives creators copy-ready Instagram AI photo prompts organized by surface: Reels covers, story templates, carousel posters, profile-grid DPs, and feed-post edits. Each prompt includes the tool, a use case, and a practical tip so you can adapt it for your own creator style.',
+    intent: 'Use these prompts when you want an Instagram-ready photo edit that looks native to the platform — not a generic AI portrait dumped into a square crop.',
+    prompts: [
+      { title: 'Viral Reels Cover Frame', scenario: 'Reels thumbnail', tool: 'Gemini', prompt: 'Create a bold Instagram Reels cover portrait from this image, clean background with subtle gradient, confident expression, sharp eyes, cinematic rim light, text-safe top-third space, 9:16 vertical composition, high contrast, realistic face preservation, no text overlay.', tip: 'Leave the top third clear if you plan to add Reels text later.' },
+      { title: 'Story Slide Glow Up', scenario: '24h story update', tool: 'ChatGPT', prompt: 'Transform this selfie into a clean Instagram story slide, warm soft light, subtle outfit upgrade, natural skin texture, preserved identity, blurred background depth, story-safe 9:16 crop, no heavy filters, premium but casual vibe.', tip: 'Works best with a front-facing selfie in natural light.' },
+      { title: 'Carousel Poster Series', scenario: 'Multi-slide carousel', tool: 'Gemini', prompt: 'Convert this portrait into a bold Instagram carousel poster, editorial magazine layout, strong side lighting, deep shadows, cinematic color grade, clean negative space on one side for swipe text, 1:1 square, realistic facial detail, high-fashion creator look.', tip: 'Use one consistent prompt across all carousel slides for visual continuity.' },
+      { title: 'Profile Grid DP Clean', scenario: 'Profile picture refresh', tool: 'ChatGPT', prompt: 'Upgrade this portrait into a premium Instagram profile picture, clean centered composition, soft studio light, natural skin, sharp eyes, subtle warm tone, professional but approachable expression, 1:1 square, no background clutter, realistic identity preservation.', tip: 'Use a well-lit front-facing portrait for best grid-DP results.' },
+      { title: 'Feed Post Aesthetic Edit', scenario: 'Main feed post', tool: 'Gemini', prompt: 'Enhance this photo into a polished Instagram feed post, tasteful color grade, improved lighting, subtle background clean-up, preserved face and body proportions, elegant composition, 4:5 vertical crop, premium creator aesthetic, no cartoon or fantasy effect.', tip: 'Mention the vibe — cozy, urban, travel, or minimal — to guide the edit.' },
+      { title: 'Trending Audio Cover Art', scenario: 'Reels with trending audio', tool: 'ChatGPT', prompt: 'Create an eye-catching Instagram Reels cover art from this photo, bold color pop background, motion-blur suggestion, confident expression, high-energy mood, 9:16 vertical, safe upper space for audio label, modern creator vibe, realistic face preservation.', tip: 'Use this when posting to a trending audio to grab scroll attention.' },
+      { title: 'Couple Feed Portrait', scenario: 'Couple Instagram post', tool: 'Gemini', prompt: 'Transform this couple photo into a romantic Instagram feed portrait, soft golden hour light, elegant casual outfits, preserved identities for both people, natural poses, warm cinematic color grade, shallow depth of field, 4:5 vertical, premium creator couple look.', tip: 'Make sure both faces are clearly visible in the source image.' },
+      { title: 'Brand Collab Post Style', scenario: 'Sponsored or partnership post', tool: 'ChatGPT', prompt: 'Enhance this image into a clean brand-friendly Instagram post, neutral elegant background, polished but natural look, product-safe negative space, realistic skin and fabric detail, subtle warm lighting, 1:1 square, professional creator quality, no fake logos or text.', tip: 'Leave space where you will place the brand tag or partnership label.' },
+    ],
+    tutorial: ['Pick the Instagram surface: Reels cover, story, carousel, DP, or feed post.', 'Choose a prompt that matches the crop and energy of that surface.', 'Copy and paste into Gemini or ChatGPT with your photo.', 'Check that the output aspect ratio matches Instagram specs: 9:16 for Reels/stories, 4:5 for feed posts, 1:1 for grid and carousel.', 'Review before posting: check face realism, hands, background artifacts, and text-safe zones.'],
+    faq: [['What is the best Instagram AI photo prompt?', 'The best prompt names the surface type, the desired mood, lights, crop, face-preservation rules, and where text might go.'], ['Can I use these prompts in Gemini for Instagram?', 'Yes. Gemini works well for Instagram edits when the source photo is clear and the prompt requests a specific aspect ratio and mood.'], ['How do I make an Instagram Reels cover with AI?', 'Use a Reels cover prompt, request 9:16 vertical, and leave clean space at the top or bottom for text overlays.'], ['Why does my AI photo not fit Instagram?', 'Most AI tools default to square or wide crops. Add the exact Instagram ratio — 4:5, 9:16, or 1:1 — in your prompt.'], ['Can I use AI photos on Instagram commercially?', 'For personal creator content it is usually fine, but for sponsored posts or commercial use, check the AI tool terms and your rights to the source photo.']],
+    links: [['Gemini Prompts', '/gemini-prompts'], ['ChatGPT Photo Prompts', '/chatgpt-photo-prompts'], ['Trending Prompts', '/trending-prompts'], ['Profile Photo Prompts', '/profile-photo-prompts']],
+  },
+  'trending-prompts': {
+    title: 'Trending AI Photo Prompts — Latest Viral Edits, Reels Covers, and Creator Looks',
+    metaTitle: 'Trending AI Photo Prompts for Viral Instagram & Creator Edits',
+    description: 'Copy the latest trending AI photo prompts for viral Reels, Instagram edits, cinematic DPs, seasonal festival looks, and creator trend covers.',
+    intro: 'Trending AI photo prompts change with the season, platform, and creator culture. This page tracks usable prompt ideas for the edits that are surfacing right now: cinematic street portraits, festival glow edits, viral fit checks, profile upgrades, and seasonal celebration covers. Each prompt is written for Gemini or ChatGPT and includes the scenario, trend context, and a tip to help you adapt before the trend moves on.',
+    intent: 'Use this page to catch a trending visual direction and generate a polished image with your own photo while the edit style is still fresh on Instagram Reels and Shorts.',
+    prompts: [
+      { title: 'Cinematic Night Street Portrait', scenario: 'Night reel cover or feed post', tool: 'Gemini', prompt: 'Transform this photo into a cinematic night street portrait, wet pavement reflections, neon signs softly blurred, warm amber street light, stylish casual outfit, realistic face preservation, film-grain texture, 4:5 Instagram composition, moody teal and orange color grade.', tip: 'Trending in urban creator Reels; use with waist-up portrait for best results.' },
+      { title: 'Soft Golden Hour Glow', scenario: 'Warm aesthetic feed post', tool: 'ChatGPT', prompt: 'Enhance this photo with a warm golden-hour glow, soft backlight, subtle lens flare, natural skin texture, preserved facial identity, airy filmic color grade, relaxed expression, 4:5 portrait crop, premium lifestyle creator look.', tip: 'Trending for travel and lifestyle creators; avoid overexposing the face.' },
+      { title: 'Festival Season Celebration Edit', scenario: 'Eid, Diwali, or Ramadan post', tool: 'Gemini', prompt: 'Create a celebratory festival portrait from this photo, warm lantern or diya light, elegant traditional outfit, tasteful festive background, natural skin tones, preserved face, soft bokeh, premium social media 4:5 crop, respectful celebration mood.', tip: 'Customize the festival objects and outfit based on the specific occasion.' },
+      { title: 'Minimal Aesthetic DP Upgrade', scenario: 'Profile picture trend', tool: 'ChatGPT', prompt: 'Upgrade this portrait into a minimal aesthetic profile picture, clean studio background, soft diffused light, natural skin texture, sharp eyes, subtle warm tone, centered composition, 1:1 square, modern personal-brand look, no heavy editing.', tip: 'Trending among creators refreshing their profile for a cleaner brand look.' },
+      { title: 'Dark Fit Check Editorial', scenario: 'Outfit or fashion Reels cover', tool: 'Gemini', prompt: 'Convert this photo into a dark editorial fit-check portrait, clean corridor or urban wall, cool cyan edge light, cinematic haze, sharp clothing detail, confident pose, realistic face preservation, editorial 4:5 Instagram crop, high-fashion mood.', tip: 'Works best with full-body or waist-up outfit shots.' },
+      { title: 'Rainy Movie Poster Vibe', scenario: 'Dramatic Reels cover art', tool: 'ChatGPT', prompt: 'Turn this photo into a cinematic rainy movie poster, umbrella, neon reflections on wet ground, dramatic rim light, expressive mood, realistic facial detail, film-grain effect, 2:3 poster composition, no fake text, premium cinematic Instagram cover.', tip: 'Trending in Bollywood and K-drama inspired Reels covers.' },
+      { title: 'Couple Sunset Silhouette', scenario: 'Romantic couple trend post', tool: 'Gemini', prompt: 'Create a romantic couple sunset silhouette from this photo, warm orange and pink sky, recognizable profiles, soft backlight, elegant casual outfits, natural pose, cinematic 4:5 Instagram crop, premium couple creator aesthetic.', tip: 'Use a side-profile or backlit source photo for better silhouette results.' },
+      { title: 'Bold Color Pop Portrait', scenario: 'High-energy Reels thumbnail', tool: 'ChatGPT', prompt: 'Create a bold color-pop portrait from this image, vibrant monochrome background, contrasty lighting, sharp facial detail, confident expression, clean edges, 9:16 vertical, text-safe upper zone, modern pop-art creator vibe.', tip: 'Trending for high-energy Reels with bold audio; keep background one strong color.' },
+    ],
+    tutorial: ['Browse the trending prompts and pick one that matches your content calendar.', 'Upload a clear photo with good lighting — the source quality determines the output quality.', 'Paste the prompt into Gemini or ChatGPT, and generate 2-3 variations to compare.', 'Reject any output with distorted hands, swapped faces, or over-edited plastic skin.', 'Post before the trend cycle shifts — trending Reels covers have a short freshness window.'],
+    faq: [['What are trending AI photo prompts?', 'They are prompt ideas matched to visual styles currently popular on Instagram Reels, Shorts, and creator feeds.'], ['How often do these trending prompts change?', 'Trend cycles shift every few weeks; check back for updated prompts as new visual styles surface.'], ['Can I use trending prompts for commercial content?', 'For personal creator content yes, but check AI tool terms, your source photo rights, and platform guidelines for sponsored posts.'], ['Which tool works best for trending edits?', 'Gemini and ChatGPT both work well; Gemini often gives better lighting control, ChatGPT better scene composition.'], ['Why does my AI photo not look like the trend?', 'The source photo quality, prompt specificity, and aspect ratio all matter. Add lighting, crop, and face-preservation details.']],
+    links: [['Instagram Prompts', '/instagram-prompts'], ['Gemini Prompts', '/gemini-prompts'], ['ChatGPT Photo Prompts', '/chatgpt-photo-prompts'], ['Browse All Prompts', '/prompts']],
+  },
 };
 
 export async function generateStaticParams() {
@@ -145,16 +194,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (legal) return { title: legal.title, description: `${legal.title} for PromptSeen Online.`, alternates: { canonical: `/${slug}` } };
   const resource = resourcePages[slug];
   if (resource) {
-    return { title: resource.metaTitle, description: resource.description, alternates: { canonical: `/${slug}` } };
+    const meta: Metadata = { title: resource.metaTitle, description: resource.description, alternates: { canonical: `/${slug}` } };
+    if (noindexSlugs.has(slug)) { meta.robots = 'noindex, follow'; }
+    return meta;
   }
   const category = categoryLinks.find(([, href]) => href === `/${slug}`);
   if (!category) return {};
   const [label] = category;
-  return {
+  const meta: Metadata = {
     title: label,
     description: `${label} from PromptSeen Online: ready-to-copy AI photo prompts for creators.`,
     alternates: { canonical: `/${slug}` },
   };
+  if (noindexSlugs.has(slug)) { meta.robots = 'noindex, follow'; }
+  return meta;
 }
 
 function ResourceJsonLd({ slug, page }: { slug: string; page: ResourcePage }) {
