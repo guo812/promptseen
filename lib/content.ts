@@ -5,7 +5,7 @@ export const site = {
   description:
     'Find Prompt Seen style AI photo prompts for Gemini, ChatGPT and Instagram. Copy cricket, Bollywood, Eid, Ramadan and South Asian creator ideas.',
   clarityId: 'x0vmlezgsz',
-  gaId: '', // 396201330 is a GA property/numeric ID, not a GA4 Measurement ID (G-XXXXXXXXXX); skip injection until corrected.
+  gaId: 'G-HJ16WBEHPL',
   gscVerification: '',
 } as const;
 
