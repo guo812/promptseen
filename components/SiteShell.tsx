@@ -57,6 +57,7 @@ export function Footer() {
           <Link href="/cookie-policy">Cookie Policy</Link>
           <Link href="/refund-policy">Refund Policy</Link>
           <Link href="/ai-content-policy">AI Content Policy</Link>
+          <Link href="/disclaimer">Disclaimer</Link>
           <Link href="/contact">Contact</Link>
         </div>
       </div>

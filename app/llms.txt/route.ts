@@ -1,6 +1,6 @@
 import { site } from '@/lib/content';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 export function GET() {
   const body = `# PromptSeen Online
@@ -74,7 +74,7 @@ Users are responsible for the photos they upload, the prompts they use, and how 
   return new Response(body, {
     headers: {
       'content-type': 'text/plain; charset=utf-8',
-      'cache-control': 'public, max-age=3600',
+      'cache-control': 'no-store',
     },
   });
 }

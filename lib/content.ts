@@ -1,7 +1,7 @@
 export const site = {
   name: 'PromptSeen Online',
   domain: 'https://promptseen.online',
-  contactEmail: 'zjjhgtw@gmail.com',
+  contactEmail: 'support@promptseen.online',
   description:
     'Find Prompt Seen style AI photo prompts for Gemini, ChatGPT and Instagram. Copy cricket, Bollywood, Eid, Ramadan and South Asian creator ideas.',
   clarityId: 'x0vmlezgsz',
@@ -424,7 +424,7 @@ export const legalPages = {
       'Depending on your location, you may request access, correction, deletion, portability, restriction, or objection regarding your personal information, and you may withdraw analytics consent through Cookie settings. We will respond according to applicable law and may need to verify your account email before acting on a request.',
       'PromptSeen is not directed to children under 13. Do not create an account or upload photos involving children unless you are legally allowed to do so and have appropriate parental or guardian consent. If you believe a child has provided personal information, contact us through the contact page so we can review it.',
       'PromptSeen may be accessed internationally and service providers may process information in countries different from yours. We use reasonable technical and organizational safeguards, but no internet service can guarantee perfect security. If a security issue affects users, we will take appropriate steps according to the circumstances and applicable requirements.',
-      'For privacy, deletion, or support requests, use the Contact page or the existing contact email shown there. The intended long-term support address is support@promptseen.online once configured. We may update this policy as the product, providers, or legal requirements change.',
+      'For privacy, deletion, or support requests, use the Contact page or email support@promptseen.online. We may update this policy as the product, providers, or legal requirements change.',
     ],
   },
   'terms-of-service': {
@@ -442,7 +442,7 @@ export const legalPages = {
       'We may suspend, limit, or terminate access if we believe an account is used for abuse, fraud, chargebacks, security attacks, unlawful content, provider-policy violations, scraping, excessive automated use, or other behavior that risks the service or other users. We may modify or discontinue features with reasonable care for existing users where practical.',
       'To the maximum extent permitted by law, PromptSeen is provided “as is” and “as available.” We disclaim implied warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, and uninterrupted operation. Our liability is limited to the amount you paid to PromptSeen for the affected service in the three months before the claim, or the minimum amount required by applicable law.',
       'Governing law and venue are to be confirmed for the final operating entity. Until then, these terms should be interpreted as neutral service terms and do not waive mandatory consumer protections that may apply in your location. If any part is unenforceable, the rest remains in effect.',
-      'For support, legal notices, privacy requests, or account questions, use the Contact page or the existing contact email shown there. The intended long-term support address is support@promptseen.online once configured.',
+      'For support, legal notices, privacy requests, or account questions, use the Contact page or email support@promptseen.online.',
     ],
   },
 } as const;
@@ -485,9 +485,21 @@ export const extraLegalPages = {
       'PromptSeen may block prompts, refuse generation, remove content, suspend accounts, preserve limited evidence, or report activity when needed to enforce this policy, provider rules, payment safety, or legal obligations.',
     ],
   },
+  disclaimer: {
+    title: 'Disclaimer',
+    updated: 'July 31, 2026',
+    body: [
+      'PromptSeen Online is an independent creator prompt resource and AI photo workflow site. It is not the official website, account, product, representative, or affiliate of any third-party “Prompt Seen” account, social network, AI platform, Google, Stripe, FAL.ai, OpenAI, Replicate, Cloudflare, Microsoft Clarity, or other named provider.',
+      'The prompts, examples, guidance, and generated outputs available through PromptSeen are provided for general creator and informational use only. They are not legal, financial, professional, advertising, platform-policy, copyright, privacy, or safety advice.',
+      'AI image results are probabilistic and may be inaccurate, biased, distorted, culturally inappropriate, unsafe, or unsuitable for your intended use. PromptSeen does not guarantee identity-perfect results, rights clearance, platform approval, viral performance, search ranking, commercial suitability, uninterrupted availability, or error-free operation.',
+      'You are responsible for source-photo rights, likeness permissions, consent from people shown in images, compliance with AI-provider rules, platform rules, local law, advertising disclosures, and any review needed before publishing or monetizing generated content.',
+      'Do not rely on PromptSeen output for sensitive uses such as identity documents, legal claims, medical or financial decisions, political persuasion, public-figure impersonation, non-consensual imagery, or any situation where a misleading image could harm someone.',
+      'If you are unsure whether a prompt, upload, generated image, or publication plan is allowed, do not publish it until you have obtained appropriate rights, consent, and professional advice where needed.',
+    ],
+  },
   contact: {
     title: 'Contact',
     updated: 'July 31, 2026',
-    body: ['For product questions, partnerships, privacy requests, deletion requests, refunds, or support, contact zjjhgtw@gmail.com through the existing support flow. The intended long-term domain support address is support@promptseen.online once configured.', 'We aim to review support and privacy requests within a reasonable timeframe. Include your account email and payment reference when relevant, but do not send passwords, secrets, private keys, or full payment card numbers.'],
+    body: ['For product questions, partnerships, privacy requests, deletion requests, refunds, or support, contact support@promptseen.online through the existing support flow.', 'We aim to review support and privacy requests within a reasonable timeframe. Include your account email and payment reference when relevant, but do not send passwords, secrets, private keys, or full payment card numbers.'],
   },
 } as const;
