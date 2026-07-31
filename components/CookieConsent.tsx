@@ -9,6 +9,7 @@ const STORAGE_KEY = 'promptseen_cookie_consent';
 const GA_SCRIPT_ID = 'promptseen-ga4-loader';
 const GA_INIT_ID = 'promptseen-ga4-init';
 const CLARITY_SCRIPT_ID = 'promptseen-clarity-loader';
+const PLAUSIBLE_SCRIPT_ID = 'promptseen-plausible-loader';
 
 declare global {
   interface Window {
@@ -23,6 +24,7 @@ function removeAnalytics() {
   document.getElementById(GA_SCRIPT_ID)?.remove();
   document.getElementById(GA_INIT_ID)?.remove();
   document.getElementById(CLARITY_SCRIPT_ID)?.remove();
+  document.getElementById(PLAUSIBLE_SCRIPT_ID)?.remove();
   window.dataLayer = undefined;
   window.gtag = undefined;
   window.clarity = undefined;
@@ -60,6 +62,15 @@ function injectAnalytics() {
     clarityScript.text = `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','${site.clarityId}');`;
     document.head.appendChild(clarityScript);
   }
+
+  if (site.plausibleDomain && !document.getElementById(PLAUSIBLE_SCRIPT_ID)) {
+    const plausibleScript = document.createElement('script');
+    plausibleScript.id = PLAUSIBLE_SCRIPT_ID;
+    plausibleScript.defer = true;
+    plausibleScript.dataset.domain = site.plausibleDomain;
+    plausibleScript.src = 'https://plausible.io/js/script.outbound-links.file-downloads.js';
+    document.head.appendChild(plausibleScript);
+  }
 }
 
 export function CookieConsent() {
@@ -94,7 +105,7 @@ export function CookieConsent() {
           <div>
             <strong>Cookie preferences</strong>
             <p>
-              PromptSeen uses essential cookies for sign-in and product features. Analytics cookies from Google Analytics and Microsoft Clarity are optional and load only after you accept analytics.
+              PromptSeen uses essential cookies for sign-in and product features. Analytics from Plausible, Google Analytics and Microsoft Clarity is optional and loads only after you accept analytics.
             </p>
           </div>
           <div className="cookie-actions">
