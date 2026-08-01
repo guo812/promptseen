@@ -473,10 +473,10 @@ export const categoryLinks: ReadonlyArray<readonly [string, string]> = categoryG
 );
 
 export const pricing = [
-  { name: 'Free', price: '$0', desc: 'Copy prompts for free and claim 1 free image generation after sign-in.', cta: 'Sign in for Free Plan', href: '/app/sign-in?plan=free&next=/generate', items: ['Unlimited prompt browsing', 'Unlimited free prompt copying', '1 free AI photo generation after sign-in', 'Selfie upload for the free generation'] },
-  { name: 'Starter', price: '$4.99', desc: 'Starter pack for testing more creator looks.', cta: 'Buy Starter Credits', href: '/app/sign-in?plan=starter&next=/pricing', items: ['60 generation credits', 'About 6 standard AI photo generations', 'Gemini / ChatGPT prompt styles', 'Standard downloads'] },
-  { name: 'Pro', price: '$9.99', desc: 'For creators posting new edits every week.', cta: 'Buy Pro Credits', href: '/app/sign-in?plan=pro&next=/pricing', items: ['160 generation credits', 'About 16 standard AI photo generations', 'HD-ready prompt workflows', 'Priority trend packs'] },
-  { name: 'Creator', price: '$19.99', desc: 'For agencies and prompt pages running larger batches.', cta: 'Buy Creator Credits', href: '/app/sign-in?plan=creator&next=/pricing', items: ['420 generation credits', 'About 42 standard AI photo generations', 'Bulk prompt planning', 'Priority support'] },
+  { name: 'Free', price: '$0', desc: 'Copy prompts for free and claim 1 free image generation after sign-in.', cta: 'Sign in for Free Plan', href: '/api/auth/free/start?plan=free&next=/generate', items: ['Unlimited prompt browsing', 'Unlimited free prompt copying', '1 free AI photo generation after sign-in', 'Selfie upload for the free generation'] },
+  { name: 'Starter', price: '$4.99', desc: 'Starter pack for testing more creator looks.', cta: 'Buy Starter Credits', href: '/api/checkout/start?plan=starter', items: ['60 generation credits', 'About 6 standard AI photo generations', 'Gemini / ChatGPT prompt styles', 'Standard downloads'] },
+  { name: 'Pro', price: '$9.99', desc: 'For creators posting new edits every week.', cta: 'Buy Pro Credits', href: '/api/checkout/start?plan=pro', items: ['160 generation credits', 'About 16 standard AI photo generations', 'HD-ready prompt workflows', 'Priority trend packs'] },
+  { name: 'Creator', price: '$19.99', desc: 'For agencies and prompt pages running larger batches.', cta: 'Buy Creator Credits', href: '/api/checkout/start?plan=creator', items: ['420 generation credits', 'About 42 standard AI photo generations', 'Bulk prompt planning', 'Priority support'] },
 ] as const;
 
 export const faqs = [

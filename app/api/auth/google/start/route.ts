@@ -16,6 +16,11 @@ export async function GET(request: NextRequest) {
   }
 
   const url = new URL(request.url);
+  if (url.searchParams.get('force') !== 'google') {
+    const next = url.searchParams.get('next') || '/generate';
+    const plan = url.searchParams.get('plan') || 'free';
+    return NextResponse.redirect(new URL(`/api/auth/free/start?plan=${encodeURIComponent(plan)}&next=${encodeURIComponent(next)}`, url.origin));
+  }
   const next = url.searchParams.get('next') || '/generate';
   const plan = url.searchParams.get('plan') || 'free';
   const nonceBytes = new Uint8Array(24);

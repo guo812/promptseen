@@ -24,7 +24,7 @@ export async function TopNav() {
             <form action="/api/auth/logout" method="post"><button className="nav-signout" type="submit">Sign out</button></form>
           </div>
         ) : (
-          <Link className="navcta" href="/generate">Sign in to Generate</Link>
+          <Link className="navcta" href="/api/auth/free/start?next=/generate">Sign in to Generate</Link>
         )}
       </nav>
     </header>

@@ -8,7 +8,7 @@ export function CheckoutButton({ plan, children, className = 'btn btn-primary' }
 
   const startCheckout = async () => {
     if (plan === 'free') {
-      window.location.href = `/app/sign-in?plan=free&next=${encodeURIComponent('/generate')}`;
+      window.location.href = `/api/auth/free/start?plan=free&next=${encodeURIComponent('/generate')}`;
       return;
     }
     setLoading(true);

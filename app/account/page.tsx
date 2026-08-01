@@ -32,7 +32,7 @@ export default async function AccountPage() {
         </SectionHeader>
         <div className="dashboard-grid">{cards.map(([title, body]) => <article className="card dashboard-card" key={title}><h3>{title}</h3><p>{body}</p></article>)}</div>
         <div className="hero-actions">
-          {session ? <><Link className="btn btn-primary" href="/generate">Generate an image</Link><form action="/api/auth/logout" method="post"><button className="btn btn-secondary" type="submit">Sign out</button></form></> : <Link className="btn btn-primary" href="/app/sign-in">Sign in</Link>}
+          {session ? <><Link className="btn btn-primary" href="/generate">Generate an image</Link><form action="/api/auth/logout" method="post"><button className="btn btn-secondary" type="submit">Sign out</button></form></> : <Link className="btn btn-primary" href="/api/auth/free/start?next=/account">Sign in</Link>}
           <Link className="btn btn-secondary" href="/pricing">View plans</Link>
         </div>
       </section>

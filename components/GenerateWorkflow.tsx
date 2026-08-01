@@ -44,7 +44,7 @@ export function GenerateWorkflow() {
 
   const generate = async () => {
     if (!signedIn) {
-      window.location.href = `/app/sign-in?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+      window.location.href = `/api/auth/free/start?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
       return;
     }
     if (hasUsedFreeGeneration()) {
@@ -84,7 +84,7 @@ export function GenerateWorkflow() {
           <article><h3>Free generation</h3><p>New signed-in users get 1 free image generation.</p></article>
           <article><h3>Selfie upload</h3><p>Upload only a photo you have permission to process.</p></article>
         </div>
-        <div className="hero-actions"><Link className="btn btn-primary" href={`/app/sign-in?next=${encodeURIComponent('/generate')}`}>Sign in to Generate</Link><Link className="btn btn-secondary" href="/pricing">View free plan</Link></div>
+        <div className="hero-actions"><Link className="btn btn-primary" href={`/api/auth/free/start?next=${encodeURIComponent('/generate')}`}>Sign in to Generate</Link><Link className="btn btn-secondary" href="/prompts">Browse free prompts</Link></div>
       </div>
     );
   }

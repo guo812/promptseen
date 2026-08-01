@@ -13,7 +13,7 @@ export function HeroSection() {
           <h1>Prompt Seen Online: Free AI Photo Prompts to Copy</h1>
           <p className="lead">Copy free Prompt Seen style AI photo prompts for Gemini, ChatGPT, Instagram Reels, profile photos, cricket edits, Bollywood posters, Eid looks, Ramadan portraits, and South Asian or Arabic creator content. Sign in to claim 1 free AI photo generation.</p>
           <div className="hero-actions">
-            <Link className="btn btn-primary" href="/generate">Get 1 Free Generation</Link>
+            <Link className="btn btn-primary" href="/api/auth/free/start?next=/generate">Get 1 Free Generation</Link>
             <Link className="btn btn-secondary" href="/prompts">Browse Free Prompts</Link>
           </div>
           <p className="safety-note">Browse and copy prompts for free. AI generation uses login and credits—no unlimited or guaranteed-viral claims.</p>
@@ -109,7 +109,7 @@ export function FinalCTA() {
         <span className="badge">Ready for real AI workflows</span>
         <h2>Turn a copied prompt into your next creator photo</h2>
         <p>Start with a prompt, then sign in when you want personalized generation with credits.</p>
-        <div className="hero-actions center"><Link className="btn btn-primary" href="/generate">Sign in to Generate</Link><Link className="btn btn-secondary" href="/pricing">See pricing</Link></div>
+        <div className="hero-actions center"><Link className="btn btn-primary" href="/api/auth/free/start?next=/generate">Sign in to Generate</Link><Link className="btn btn-secondary" href="/pricing">See pricing</Link></div>
       </div>
     </section>
   );

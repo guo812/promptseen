@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
   const session = await verifySessionCookie(request.cookies.get('promptseen_session')?.value);
   if (!session) {
     const next = `/api/checkout/start?plan=${encodeURIComponent(planId)}`;
-    return json({ ok: false, error: 'AUTH_REQUIRED', signInUrl: `/app/sign-in?next=${encodeURIComponent(next)}&plan=${encodeURIComponent(planId)}` }, { status: 401 });
+    return json({ ok: false, error: 'AUTH_REQUIRED', signInUrl: `/api/auth/free/start?next=${encodeURIComponent(next)}&plan=${encodeURIComponent(planId)}` }, { status: 401 });
   }
 
   const env = getEnv();

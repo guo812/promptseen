@@ -309,7 +309,7 @@ export default async function DynamicPage({ params }: Props) {
           Ready-to-copy prompt ideas for this category. PromptSeen Online is an independent resource and results may vary by model.
         </SectionHeader>
         <div className="prompts-grid page-grid">{prompts.slice(0, 6).map((prompt) => <PromptCard key={prompt.title} prompt={prompt} />)}</div>
-        <div className="center-actions"><Link className="btn btn-primary" href="/generate">Sign in to Generate</Link><Link className="btn btn-secondary" href="/prompts">Browse all prompts</Link></div>
+        <div className="center-actions"><Link className="btn btn-primary" href="/api/auth/free/start?next=/generate">Sign in to Generate</Link><Link className="btn btn-secondary" href="/prompts">Browse all prompts</Link></div>
       </section>
     </PageShell>
   );
