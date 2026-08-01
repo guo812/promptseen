@@ -1,26 +1,27 @@
 import Link from 'next/link';
-import { Suspense } from 'react';
-import { SignInPanel } from '@/components/SignInPanel';
+import { redirect } from 'next/navigation';
 
 export const metadata = { title: 'Sign in', robots: { index: false, follow: false } };
 
-type Props = { params: Promise<{ path?: string[] }> };
+type Props = {
+  params: Promise<{ path?: string[] }>;
+  searchParams?: Promise<{ next?: string; plan?: string }>;
+};
 
-export default async function AppRoute({ params }: Props) {
+function safeNext(value?: string) {
+  if (!value || !value.startsWith('/') || value.startsWith('//')) return '/generate';
+  return value;
+}
+
+export default async function AppRoute({ params, searchParams }: Props) {
   const { path = [] } = await params;
+  const query = searchParams ? await searchParams : {};
   const route = path[0] || 'sign-in';
 
   if (route === 'sign-in' || route === 'register') {
-    return (
-      <main className="container legal">
-        <Link className="badge" href="/">← Back to PromptSeen Online</Link>
-        <h1 style={{ marginTop: 28 }}>Sign in to generate</h1>
-        <p className="lede">Use one-click Free plan sign-in to claim one free AI photo generation. Your account state and entitlement are visible after you return.</p>
-        <Suspense fallback={<p className="notice">Loading sign-in options…</p>}>
-          <SignInPanel />
-        </Suspense>
-      </main>
-    );
+    const next = safeNext(query.next);
+    const plan = query.plan || 'free';
+    redirect(`/api/auth/free/start?plan=${encodeURIComponent(plan)}&next=${encodeURIComponent(next)}`);
   }
 
   return (
@@ -28,7 +29,7 @@ export default async function AppRoute({ params }: Props) {
       <Link className="badge" href="/">← Back to PromptSeen Online</Link>
       <h1 style={{ marginTop: 28 }}>App route not found</h1>
       <p className="lede">This app route is not active yet. Continue to the working generator or pricing flow.</p>
-      <div className="hero-actions"><Link className="btn btn-primary" href="/generate">Generate</Link><Link className="btn btn-secondary" href="/pricing">Pricing</Link></div>
+      <div className="hero-actions"><Link className="btn btn-primary" href="/api/auth/free/start?next=/generate">Generate</Link><Link className="btn btn-secondary" href="/pricing">Pricing</Link></div>
     </main>
   );
 }
