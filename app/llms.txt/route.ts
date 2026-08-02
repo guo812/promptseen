@@ -29,7 +29,12 @@ Important: PromptSeen Online is not affiliated with any third-party Prompt Seen 
 
 - Diwali AI Photo Prompts: ${site.domain}/diwali-ai-photo-prompts
 - ChatGPT Photo Prompts: ${site.domain}/chatgpt-photo-prompts
+- Google Gemini AI Prompts: ${site.domain}/google-gemini
+- Google Gemini Prompt Guide: ${site.domain}/google-gemini-prompt
+- AI Gemini Prompts: ${site.domain}/ai-gemini
 - Gemini Prompts: ${site.domain}/gemini-prompts
+- Prompt Seen Trending Girl: ${site.domain}/prompt-seen-trending-girl
+- Prompt Seen Trending Boy: ${site.domain}/prompt-seen-trending-boy
 - India AI Photo Prompts: ${site.domain}/india-ai-photo-prompts
 - Couple AI Photo Prompts: ${site.domain}/couple-ai-photo-prompts
 - Cricket AI Photo Prompts: ${site.domain}/cricket-ai-photo-prompts

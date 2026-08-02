@@ -427,6 +427,9 @@ export const categoryGroups: Array<{ title: string; items: Array<[string, string
   {
     title: 'By AI tool',
     items: [
+      ['Google Gemini AI Prompts', '/google-gemini'],
+      ['Google Gemini Prompt Guide', '/google-gemini-prompt'],
+      ['AI Gemini Prompts', '/ai-gemini'],
       ['Gemini Prompts', '/gemini-prompts'],
       ['ChatGPT Photo Prompts', '/chatgpt-photo-prompts'],
       ['Dreamina Prompts', '/dreamina-prompts'],
@@ -452,6 +455,8 @@ export const categoryGroups: Array<{ title: string; items: Array<[string, string
       ['Cinematic AI Photo Prompts', '/cinematic-ai-photo-prompts'],
       ['Boys AI Photo Prompts', '/boys-ai-photo-prompts'],
       ['Girls AI Photo Prompts', '/girls-ai-photo-prompts'],
+      ['Prompt Seen Trending Boy', '/prompt-seen-trending-boy'],
+      ['Prompt Seen Trending Girl', '/prompt-seen-trending-girl'],
       ['Trending Prompts', '/trending-prompts'],
     ],
   },
